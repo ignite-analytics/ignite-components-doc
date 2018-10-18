@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './Assets/logo-white-border.png';
 
 import {
     Container,
     Row,
     Column,
+    Header,
 } from 'ignite-components';
 
 import CardsPage from "./Pages/cards";
@@ -16,6 +16,7 @@ import TagsPage from "./Pages/tags";
 import ProgressBarPage from "./Pages/progressBar";
 import TablePage from "./Pages/table";
 import DropdownPage from "./Pages/dropdown";
+import {StyledLogo} from "./style";
 
 class App extends Component {
 
@@ -34,10 +35,10 @@ class App extends Component {
         return (
             <Container>
                 {/* Header */}
-                <Row align={'center'} bg={'dark'} padding={2}>
+                <Row align={'center'} bg={'primary'} padding={[4, 2]}>
                     <Container text={'center'}>
-                        <img src={logo} className="App-logo" alt="logo"/>
-                        <h1>Ignite Components</h1>
+                        <StyledLogo src={logo} alt="Ignite Components Logo"/>
+                        <Header size={2}>Ignite Components</Header>
                     </Container>
                 </Row>
 
