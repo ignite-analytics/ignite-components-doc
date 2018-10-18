@@ -3,6 +3,12 @@
 # testing
 /coverage
 
+# dependencies
+/node_modules
+
+# Intellij
+.idea/
+
 # misc
 .DS_Store
 .env.local
