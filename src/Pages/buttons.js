@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { zenburn } from 'react-syntax-highlighter/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter/prism';
+import { atomDark } from 'react-syntax-highlighter/styles/prism';
 import {colors} from '../Lib/variables';
 
 import {
@@ -47,7 +47,7 @@ class ButtonsPage extends Component {
              */
         `;
 
-        docString += `// Regular buttons \n`;
+        docString += `\n\t\t\t\t// Regular buttons \n`;
 
         docString += Object.keys(colors).map((key, i) => {
             return `
@@ -57,7 +57,7 @@ class ButtonsPage extends Component {
             `
         }).join("\n");
 
-        docString += `\n// Border buttons \n`;
+        docString += `\n\t\t\t\t// Border buttons \n`;
         docString += Object.keys(colors).map((key, i) => {
             return `
                 <Button border key={${i}} color={'${key}'}>
@@ -66,7 +66,7 @@ class ButtonsPage extends Component {
             `
         }).join("\n");
 
-        docString += `\n// Round buttons \n`;
+        docString += `\n\t\t\t\t// Round buttons \n`;
         docString += Object.keys(colors).map((key, i) => {
             return `
                 <Button round key={${i}} color={'${key}'}>
@@ -124,7 +124,7 @@ class ButtonsPage extends Component {
                     <Column padding={1} md={12}>
                         <Panel bg={'light'} padding={[1, 2]} summary={<Header size={3}>Code snippet</Header>}>
                             <Container padding={[1, 2]}>
-                                <SyntaxHighlighter showLineNumbers language='javascript' style={zenburn}>
+                                <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
                                     {docString}
                                 </SyntaxHighlighter>
                             </Container>

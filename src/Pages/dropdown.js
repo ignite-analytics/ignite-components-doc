@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { zenburn } from 'react-syntax-highlighter/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter/prism';
+import { atomDark } from 'react-syntax-highlighter/styles/prism';
 
 import {
     Alert,
@@ -86,7 +86,7 @@ class DropdownPage extends Component {
                     <Column md={12}>
                         <Panel bg={'light'} padding={[1, 2]} summary={<Header size={3}>Code snippet</Header>}>
                             <Container padding={[1, 2]}>
-                                <SyntaxHighlighter showLineNumbers language='javascript' style={zenburn}>
+                                <SyntaxHighlighter showLineNumbers language='javascript' style={atomDark}>
                                     {docString}
                                 </SyntaxHighlighter>
                             </Container>
