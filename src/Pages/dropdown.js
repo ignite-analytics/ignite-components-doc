@@ -86,7 +86,7 @@ class DropdownPage extends Component {
                     <Column md={12}>
                         <Panel bg={'light'} padding={[1, 2]} summary={<Header size={3}>Code snippet</Header>}>
                             <Container padding={[1, 2]}>
-                                <SyntaxHighlighter showLineNumbers language='javascript' style={atomDark}>
+                                <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
                                     {docString}
                                 </SyntaxHighlighter>
                             </Container>
