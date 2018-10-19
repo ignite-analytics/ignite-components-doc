@@ -1,19 +1,46 @@
+/* @flow */
 import React, {Component} from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter/prism';
 import { atomDark } from 'react-syntax-highlighter/styles/prism';
+import update from "immutability-helper";
+import styled from "styled-components";
 
 import {
-    Alert,
+    Button,
+    Dropdown,
+    DropdownContainer,
     Container,
     Row,
     Column,
     Panel,
     Header,
-    Text
+    Text,
+    Icon
 } from 'ignite-components';
 
+const StyledIcon = styled(Icon, Panel);
 
-class DropdownPage extends Component {
+type Props = {}
+
+type State = {
+    open: {
+        [string]: boolean
+    },
+}
+
+class DropdownPage extends Component<Props, State> {
+
+    state: State = {
+        open: {},
+    };
+
+    toggleDropdown = (key: string) => {
+        this.setState((state) => update(this.state, {
+            open: {
+                [key]: {$set: !state.open[key]}
+            }
+        }))
+    };
 
     render() {
         const docString = `
@@ -36,54 +63,77 @@ class DropdownPage extends Component {
              *
              */
              
-            <Alert color={'decline'} icon={'exclamation-circle'}>
-                <Text size={1}>This went terrible wrong!</Text>
-            </Alert>
-
-            <Alert color={'warning'} icon={'exclamation-triangle'}>
-                <Text size={1}>This went somewhat wrong...</Text>
-            </Alert>
-
-            <Alert color={'accept'} icon={'check'}>
-                <Text size={1}>This went very good!</Text>
-            </Alert>
-
-            <Alert color={'primary'} icon={'question'}>
-                <Text size={1}>Some information</Text>
-            </Alert>
+            
         `;
 
         return (
             <Container>
                 <Row alignVertical={'center'}>
                     <Column md={6} padding={1}>
-                        <Header size={2}>Alerts</Header>
+                        <Header size={2}>Dropdowns</Header>
                         <Text size={1}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam vel
                             rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non condimentum orci
                             porttitor quis.
                         </Text>
-                    </Column>
-                    <Column padding={1}>
-                        <Alert color={'decline'} icon={'exclamation-circle'}>
-                            <Text size={1}>This went terrible wrong!</Text>
-                        </Alert>
-
-                        <Alert color={'warning'} icon={'exclamation-triangle'}>
-                            <Text size={1}>This went somewhat wrong...</Text>
-                        </Alert>
-
-                        <Alert color={'accept'} icon={'check'}>
-                            <Text size={1}>This went very good!</Text>
-                        </Alert>
-
-                        <Alert color={'primary'} icon={'question'}>
-                            <Text size={1}>Some information</Text>
-                        </Alert>
+                        <StyledIcon icon={'plus'} color={'primary'} />
                     </Column>
                 </Row>
                 <Row>
-                    <Column md={12}>
+                    <Column text={'center'} padding={1}>
+                        <DropdownContainer>
+
+                            {/* Trigger */}
+                            <Button
+                                color={'light'}
+                                onClick={() => this.toggleDropdown('light')}>
+                                Toggle Light Dropdown
+                            </Button>
+
+                            {/* Content */}
+                            <Dropdown open={this.state.open['light']} arrow={true} bg={'light'} padding={2}>
+                                <Header size={3}>A light dropdown</Header>
+                                <Text>This is a dropdown with some content</Text>
+                            </Dropdown>
+                        </DropdownContainer>
+                    </Column>
+                    <Column text={'center'} padding={1}>
+                        <DropdownContainer>
+
+                            {/* Trigger */}
+                            <Button
+                                color={'dark'}
+                                onClick={() => this.toggleDropdown('dark')}>
+                                Toggle Dark Dropdown
+                            </Button>
+
+                            {/* Content */}
+                            <Dropdown open={this.state.open['dark']} arrow={true} bg={'dark'} padding={2}>
+                                <Header size={3}>A dark dropdown</Header>
+                                <Text>This is a dropdown with some content</Text>
+                            </Dropdown>
+                        </DropdownContainer>
+                    </Column>
+                    <Column text={'center'} padding={1}>
+                        <DropdownContainer>
+
+                            {/* Trigger */}
+                            <Button
+                                color={'dark'}
+                                onClick={() => this.toggleDropdown('dark')}>
+                                Toggle Dark Dropdown
+                            </Button>
+
+                            {/* Content */}
+                            <Dropdown open={this.state.open['dark']} arrow={true} bg={'dark'} padding={2}>
+                                <Header size={3}>A dark dropdown</Header>
+                                <Text>This is a dropdown with some content</Text>
+                            </Dropdown>
+                        </DropdownContainer>
+                    </Column>
+                </Row>
+                <Row>
+                    <Column padding={1} md={12}>
                         <Panel bg={'light'} padding={[1, 2]} summary={<Header size={3}>Code snippet</Header>}>
                             <Container padding={[1, 2]}>
                                 <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
