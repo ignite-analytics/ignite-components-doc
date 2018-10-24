@@ -1,56 +1,62 @@
 import React, {Component} from 'react';
 import logo from './Assets/logo-white-border.png';
-
+import { BrowserRouter, Route } from "react-router-dom";
 import {
-    Container,
-    Row,
     Column,
-    Header,
+    NavBar,
+    NavBarContent,
+    NavBarItem,
+    Icon,
 } from 'ignite-components';
 
-import CardsPage from "./Pages/cards";
-import ButtonsPage from "./Pages/buttons";
-import PanelsPage from "./Pages/panels";
-import AlertPage from "./Pages/alerts";
-import TagsPage from "./Pages/tags";
-import ProgressBarPage from "./Pages/progressBar";
-import TablePage from "./Pages/table";
-import DropdownPage from "./Pages/dropdown";
-import {StyledLogo} from "./style";
+import HomePage from "./Pages/HomePage";
+import GettingStartedPage from "./Pages/GettingStartedPage";
+import ComponentsPage from "./Pages/ComponentsPage";
+import LayoutPage from "./Pages/LayoutPage";
+
+
+import {FillRow, StyledLogo, StyledNavLink} from "./style";
 
 class App extends Component {
 
     static pages = [
-        AlertPage,
-        ButtonsPage,
-        CardsPage,
-        DropdownPage,
-        PanelsPage,
-        TagsPage,
-        ProgressBarPage,
-        TablePage
+        {name: 'Home', path: '/home/', component: HomePage},
+        {name: 'Getting Started', path: '/getting-started/', component: GettingStartedPage},
+        {name: 'Layout', path: '/layout/', component: LayoutPage},
+        {name: 'Components', path: '/components/', component: ComponentsPage}
     ];
 
     render = () => {
         return (
-            <Container>
-                {/* Header */}
-                <Row align={'center'} bg={'primary'} padding={[4, 2]}>
-                    <Container text={'center'}>
+            <BrowserRouter>
+                <div>
+                    <NavBar fixed padding={1} bg={'dark'} alignVertical={'center'}>
                         <StyledLogo src={logo} alt="Ignite Components Logo"/>
-                        <Header size={2}>Ignite Components</Header>
-                    </Container>
-                </Row>
-
-                {/* Component pages */}
-                {App.pages.map(Page => (
-                    <Row align={'center'} bg={'stableLight'} padding={[4, 2]}>
-                        <Column md={6}>
-                            <Page />
+                        <Column padding={[0, 1]}>
+                            <NavBarContent>
+                                {App.pages.map((page) => (
+                                    <StyledNavLink activeClassName={'active'} to={page.path}>
+                                        <NavBarItem>
+                                            {page.name}
+                                        </NavBarItem>
+                                    </StyledNavLink>
+                                ))}
+                            </NavBarContent>
                         </Column>
-                    </Row>
-                ))}
-            </Container>
+                        <Column sm={1} text={'right'} padding={[0, 1]}>
+                            <Icon size={'1.5em'} prefix={'fab'} icon={'github'} />
+                        </Column>
+                    </NavBar>
+
+                    <FillRow bg={'stableLight'} padding={[6, 0, 5, 0]} align={'center'}>
+                        <Column>
+                            {App.pages.map((page) => (
+                                <Route path={page.path} component={page.component} />
+                            ))}
+                        </Column>
+                    </FillRow>
+                </div>
+            </BrowserRouter>
         );
     }
 }
