@@ -7,6 +7,7 @@ import AlertPage from "./Pages/alerts";
 import ButtonsPage from "./Pages/buttons";
 import CardsPage from "./Pages/cards";
 import DropdownPage from "./Pages/dropdown";
+import FormPage from "./Pages/form";
 import PanelsPage from "./Pages/panels";
 import ProgressBarPage from "./Pages/progressBar";
 import TagsPage from "./Pages/tags";
@@ -37,6 +38,7 @@ class ComponentsPage extends Component<Props> {
         {name: 'Buttons', path: '/components/buttons/', component: ButtonsPage, icon: 'hand-point-down', prefix: 'far'},
         {name: 'Cards', path: '/components/cards/', component: CardsPage, icon: 'address-card', prefix: 'far'},
         {name: 'Dropdowns', path: '/components/dropdown/', component: DropdownPage, icon: 'caret-square-down', prefix: 'far'},
+        {name: 'Forms', path: '/components/form/', component: FormPage, icon: 'file-alt', prefix: 'far'},
         {name: 'Panels', path: '/components/panels/', component: PanelsPage, icon: 'expand', prefix: 'fas'},
         {name: 'Progress bars', path: '/components/progress-bar/', component: ProgressBarPage, icon: 'bars', prefix: 'fas'},
         {name: 'Tags', path: '/components/tags/', component: TagsPage, icon: 'tags', prefix: 'fas'},
@@ -60,8 +62,8 @@ class ComponentsPage extends Component<Props> {
                                     <Header size={4}>Components</Header>
                                 </CardHeader>
                                 <CardContent>
-                                    {ComponentsPage.pages.map((page) => (
-                                        <NavBarContent>
+                                    {ComponentsPage.pages.map((page, i) => (
+                                        <NavBarContent key={i}>
                                             <Column>
                                                 <StyledNavLink to={page.path}>
                                                     <NavBarItem>
@@ -76,8 +78,8 @@ class ComponentsPage extends Component<Props> {
                             </Card>
                         </Column>
                         <Column md={9} padding={1.5}>
-                            {ComponentsPage.pages.map((page) => (
-                                <Route path={page.path} component={page.component} />
+                            {ComponentsPage.pages.map((page, i) => (
+                                <Route key={`page-${i}`} path={page.path} component={page.component} />
                             ))}
                         </Column>
                     </Row>

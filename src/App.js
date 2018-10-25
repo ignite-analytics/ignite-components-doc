@@ -34,8 +34,8 @@ class App extends Component {
                         <StyledLogo src={logo} alt="Ignite Components Logo"/>
                         <Column padding={[0, 1]}>
                             <NavBarContent>
-                                {App.pages.map((page) => (
-                                    <StyledNavLink activeClassName={'active'} to={page.path}>
+                                {App.pages.map((page, i) => (
+                                    <StyledNavLink key={i} activeClassName={'active'} to={page.path}>
                                         <NavBarItem>
                                             {page.name}
                                         </NavBarItem>
@@ -50,8 +50,8 @@ class App extends Component {
 
                     <FillRow bg={'stableLight'} padding={[6, 0, 5, 0]} align={'center'}>
                         <Column>
-                            {App.pages.map((page) => (
-                                <Route path={page.path} component={page.component} />
+                            {App.pages.map((page, i) => (
+                                <Route key={`page-${i}`} path={page.path} component={page.component} />
                             ))}
                         </Column>
                     </FillRow>

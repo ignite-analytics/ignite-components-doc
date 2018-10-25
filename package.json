@@ -5,6 +5,7 @@
   "homepage": "http://ignite-analytics.github.io/ignite-components-doc",
   "dependencies": {
     "immutability-helper": "^2.7.1",
+    "normalize.css": "^8.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router": "^4.3.1",

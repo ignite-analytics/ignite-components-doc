@@ -50,8 +50,8 @@ class LayoutPage extends Component<Props> {
                                     <Header size={4}>Layout</Header>
                                 </CardHeader>
                                 <CardContent>
-                                    {LayoutPage.pages.map((page) => (
-                                        <NavBarContent>
+                                    {LayoutPage.pages.map((page, i) => (
+                                        <NavBarContent key={i}>
                                             <Column>
                                                 <StyledNavLink to={page.path}>
                                                     <NavBarItem>
@@ -66,8 +66,8 @@ class LayoutPage extends Component<Props> {
                             </Card>
                         </Column>
                         <Column md={9} padding={1.5}>
-                            {LayoutPage.pages.map((page) => (
-                                <Route path={page.path} component={page.component} />
+                            {LayoutPage.pages.map((page, i) => (
+                                <Route key={`page-${i}`} path={page.path} component={page.component} />
                             ))}
                         </Column>
                     </Row>
