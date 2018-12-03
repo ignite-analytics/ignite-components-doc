@@ -38,7 +38,7 @@ class PropsTable extends React.Component<Props> {
                                             <Text code>{prop.defaultValue}</Text>
                                         </Td>
                                         <Td>
-                                            <Text>{prop.description}</Text>
+                                            <Text size={1}>{prop.description}</Text>
                                         </Td>
                                     </Tr>
                                 ))}

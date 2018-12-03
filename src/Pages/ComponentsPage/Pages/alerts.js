@@ -14,15 +14,15 @@ class AlertPage extends Component {
         { name: "color", type: "string", defaultValue: "", description: "Defines the color of the alert container" },
         {
             name: "padding?",
-            type: "string",
+            type: "{Array<number> | number}",
             defaultValue: "[1, 2]",
-            description: "Defines the padding of the alert container",
+            description: "An array of or a single number indicating the padding of the container",
         },
         {
             name: "margin?",
             type: "{Array<number> | number}",
             defaultValue: "[0.5, 0]",
-            description: "Defines the margin of the alert container",
+            description: "An array of or a single number indicating the margin of the container",
         },
     ];
 

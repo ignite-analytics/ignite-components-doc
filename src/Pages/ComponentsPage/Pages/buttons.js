@@ -58,27 +58,33 @@ class ButtonsPage extends Component {
     static buttonTypes = [
         {
             title: "Regular buttons",
-            description:
-                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
+            description: `The regular button is the most basic button type in the library. It comes in all the colors that is specified in the config file.`,
             props: {},
         },
         {
-            title: "Regular buttons",
-            description:
-                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
+            title: "Border buttons",
+            description: `In need of a button, but not the hefty background colors they bring? The border button is a simple button without any background and only a border to show its extents. The background color will appear upon hover.`,
             props: { border: true },
         },
         {
             title: "Round buttons",
-            description:
-                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
+            description: `Another button that can come handy is the round button. Many designers tend to vary between rectangular and round buttons to spice the design. The round button can also be combined with the border property.`,
             props: { round: true },
         },
         {
             title: "Buttons with icons",
-            description:
-                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
-            props: { leftIcon: "apple-alt" },
+            description: `In many situations it can be handy to include an icon inside the button in order to make it more clear to the user what the button does. In order to do so, simply apply the leftIcon and rightIcon props.`,
+            props: { leftIcon: "fire" },
+        },
+        {
+            title: "Loading button",
+            description: `After the user has interacted with a button, it can be handy to display an indicator that something is happening. Therefore the Ignite Button Component comes equipped with a loading prop that, when enabled, replaces the button content with a spinning wheel.`,
+            props: { loading: true },
+        },
+        {
+            title: "Disabled button",
+            description: `Sometimes buttons are not meant to trigger any actions when clicking a button. Therefore the button component comes with a disabled property that indicates that the button is not clickable.`,
+            props: { disabled: true },
         },
     ];
 
@@ -93,8 +99,9 @@ class ButtonsPage extends Component {
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Buttons gives the user the possibility to interact with the application. Ignite
-                                Components offer a large variety of different buttons.
+                                Buttons gives the user the possibility to interact with the application. This library
+                                offers a large variety of different button types, such as regular buttons, border
+                                buttons, round buttons, buttons with icons and the combination of the above.
                             </Text>
                         </Column>
                     </Row>
@@ -105,61 +112,68 @@ class ButtonsPage extends Component {
                             </Text>
                         </Column>
                     </Row>
+
                     <PropsTable componentProps={ButtonsPage.componentProps} />
 
                     {ButtonsPage.buttonTypes.map((type, i) => (
-                        <Container padding={[2, 1]} key={i}>
-                            <Row>
-                                <Column padding={1}>
-                                    <Header size={3}>{type.title}</Header>
-                                    <Text size={1}>{type.description}</Text>
-                                    <Container padding={[1, 0]}>
-                                        <Button {...type.props} key={0} color={"primary"}>
+                        <Row padding={[2, 1]} key={i}>
+                            <Column>
+                                <Row>
+                                    <Column padding={1}>
+                                        <Header size={3}>{type.title}</Header>
+                                        <Text size={1}>{type.description}</Text>
+                                    </Column>
+                                </Row>
+                                <Row>
+                                    <Column padding={1}>
+                                        <Container text={"center"}>
+                                            <Button {...type.props} key={0} color={"primary"}>
+                                                primary
+                                            </Button>
+
+                                            <Button {...type.props} key={1} color={"secondary"}>
+                                                secondary
+                                            </Button>
+
+                                            <Button {...type.props} key={2} color={"action"}>
+                                                action
+                                            </Button>
+
+                                            <Button {...type.props} key={3} color={"warning"}>
+                                                warning
+                                            </Button>
+                                        </Container>
+                                    </Column>
+                                </Row>
+                                <CodeSnippet
+                                    snippet={`
+                                        <Button ${Object.keys(type.props)
+                                            .reduce((res, key) => res + ` ${key}={${type.props[key]}}`, "")
+                                            .trim()} key={0} color={"primary"}>
                                             primary
                                         </Button>
 
-                                        <Button {...type.props} key={1} color={"secondary"}>
+                                        <Button ${Object.keys(type.props)
+                                            .reduce((res, key) => res + ` ${key}`, "")
+                                            .trim()} key={1} color={"secondary"}>
                                             secondary
                                         </Button>
 
-                                        <Button {...type.props} key={2} color={"action"}>
+                                        <Button ${Object.keys(type.props)
+                                            .reduce((res, key) => res + ` ${key}`, "")
+                                            .trim()} key={2} color={"action"}>
                                             action
                                         </Button>
 
-                                        <Button {...type.props} key={3} color={"warning"}>
+                                        <Button ${Object.keys(type.props)
+                                            .reduce((res, key) => res + ` ${key}`, "")
+                                            .trim()} key={3} color={"warning"}>
                                             warning
                                         </Button>
-                                    </Container>
-                                </Column>
-                            </Row>
-                            <CodeSnippet
-                                snippet={`
-                                    <Button ${Object.keys(type.props)
-                                        .reduce((res, key) => res + ` ${key}={${type.props[key]}}`, "")
-                                        .trim()} key={0} color={"primary"}>
-                                        primary
-                                    </Button>
-
-                                    <Button ${Object.keys(type.props)
-                                        .reduce((res, key) => res + ` ${key}`, "")
-                                        .trim()} key={1} color={"secondary"}>
-                                        secondary
-                                    </Button>
-
-                                    <Button ${Object.keys(type.props)
-                                        .reduce((res, key) => res + ` ${key}`, "")
-                                        .trim()} key={2} color={"action"}>
-                                        action
-                                    </Button>
-
-                                    <Button ${Object.keys(type.props)
-                                        .reduce((res, key) => res + ` ${key}`, "")
-                                        .trim()} key={3} color={"warning"}>
-                                        warning
-                                    </Button>
-                                `}
-                            />
-                        </Container>
+                                    `}
+                                />
+                            </Column>
+                        </Row>
                     ))}
                 </CardContent>
             </Card>
