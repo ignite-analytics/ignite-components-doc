@@ -1,24 +1,11 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import { atomDark } from 'react-syntax-highlighter/styles/prism';
+import React, { Component } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
+import { atomDark } from "react-syntax-highlighter/styles/prism";
 
-import {
-    Card,
-    CardHeader,
-    CardContent,
-    Container,
-    Row,
-    Column,
-    Panel,
-    Tag,
-    Header,
-    Text
-} from 'ignite-components';
-import {withRouter} from "react-router-dom";
-
+import { Card, CardHeader, CardContent, Container, Row, Column, Panel, Tag, Header, Text } from "ignite-components";
+import { withRouter } from "react-router-dom";
 
 class TagsPage extends Component {
-
     render() {
         const docString = `
             /**
@@ -51,49 +38,49 @@ class TagsPage extends Component {
         `;
 
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Tags</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam vel
-                                rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non condimentum orci
-                                porttitor quis.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam
+                                vel rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non
+                                condimentum orci porttitor quis.
                             </Text>
                         </Column>
                     </Row>
                     <Row>
                         <Column padding={1}>
-                            <Tag bg={'decline'} leftIcon={'exclamation-circle'}>
+                            <Tag bg={"decline"} leftIcon={"exclamation-circle"}>
                                 <Text>This went terrible wrong!</Text>
                             </Tag>
 
-                            <Tag bg={'warning'} leftIcon={'exclamation-triangle'} hover>
+                            <Tag bg={"warning"} leftIcon={"exclamation-triangle"} hover>
                                 <Text>This went somewhat wrong...</Text>
                             </Tag>
 
-                            <Tag bg={'accept'} leftIcon={'check'}>
+                            <Tag bg={"accept"} leftIcon={"check"}>
                                 <Text>This went very good!</Text>
                             </Tag>
 
-                            <Tag bg={'primary'} leftIcon={'question'}>
+                            <Tag bg={"primary"} leftIcon={"question"}>
                                 <Text>Some information</Text>
                             </Tag>
 
-                            <Tag bg={'stableDark'} rightIcon={'times'} hover>
+                            <Tag bg={"stableDark"} rightIcon={"times"} hover>
                                 <Text>Close this</Text>
                             </Tag>
                         </Column>
                     </Row>
                     <Row>
                         <Column md={12}>
-                            <Panel bg={'dark'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
+                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
                                 <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
+                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
                                         {docString}
                                     </SyntaxHighlighter>
                                 </Container>

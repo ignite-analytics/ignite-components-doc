@@ -1,25 +1,12 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import {atomDark} from 'react-syntax-highlighter/styles/prism';
+import React, { Component } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
+import { atomDark } from "react-syntax-highlighter/styles/prism";
 
-import {
-    Container,
-    Card,
-    CardHeader,
-    CardContent,
-    Row,
-    Column,
-    Panel,
-    Header,
-    Text
-} from 'ignite-components';
-import {withRouter} from "react-router-dom";
-
+import { Container, Card, CardHeader, CardContent, Row, Column, Panel, Header, Text } from "ignite-components";
+import { withRouter } from "react-router-dom";
 
 class PanelsPage extends Component {
-
     render() {
-
         let panelContent = (
             <Container>
                 <Header size={3}>Panel title</Header>
@@ -71,12 +58,12 @@ class PanelsPage extends Component {
         `;
 
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Panels</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
@@ -87,21 +74,21 @@ class PanelsPage extends Component {
                     </Row>
                     <Row>
                         <Column padding={1}>
-                            <Panel bg={'light'} padding={[1, 2]} summary={panelContent}>
+                            <Panel bg={"light"} padding={[1, 2]} summary={panelContent}>
                                 <Container padding={[1, 2]}>
                                     <Header size={3}>Light Panel</Header>
                                     <Text>Lorem Ipsum dolor siet</Text>
                                 </Container>
                             </Panel>
 
-                            <Panel bg={'dark'} padding={[1, 2]} summary={panelContent}>
+                            <Panel bg={"dark"} padding={[1, 2]} summary={panelContent}>
                                 <Container padding={[1, 2]}>
                                     <Header size={3}>Dark Panel</Header>
                                     <Text>Lorem Ipsum dolor siet</Text>
                                 </Container>
                             </Panel>
 
-                            <Panel bg={'warning'} padding={[1, 2]} summary={panelContent}>
+                            <Panel bg={"warning"} padding={[1, 2]} summary={panelContent}>
                                 <Container padding={[1, 2]}>
                                     <Header size={3}>Warning Panel</Header>
                                     <Text>Lorem Ipsum dolor siet</Text>
@@ -111,9 +98,9 @@ class PanelsPage extends Component {
                     </Row>
                     <Row>
                         <Column padding={1} md={12}>
-                            <Panel bg={'dark'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
+                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
                                 <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
+                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
                                         {docString}
                                     </SyntaxHighlighter>
                                 </Container>

@@ -1,165 +1,166 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import { atomDark } from 'react-syntax-highlighter/styles/prism';
-import {colors} from '../../../Lib/variables';
+import React, { Component } from "react";
 
-import {
-    Button,
-    Card,
-    CardHeader,
-    CardContent,
-    Container,
-    Row,
-    Column,
-    Panel,
-    Header,
-    Text
-} from 'ignite-components';
-import {withRouter} from "react-router-dom";
+import { Button, Card, CardHeader, CardContent, Container, Row, Column, Header, Text } from "ignite-components";
 
+import PropsTable from "../../../Components/PropsTable";
+import CodeSnippet from "../../../Components/CodeSnippet";
+
+import { withRouter } from "react-router-dom";
 
 class ButtonsPage extends Component {
+    static componentProps = [
+        { name: "style?", type: "Object", defaultValue: "", description: "The general style property" },
+        { name: "className?", type: "string", defaultValue: "", description: "The general className property" },
+        { name: "children?", type: "Array<Node>", defaultValue: "fas", description: "The general children property" },
+
+        {
+            name: "leftIcon?",
+            type: "string",
+            defaultValue: "",
+            description: "The font awesome key for the left icon in the button",
+        },
+        {
+            name: "rightIcon?",
+            type: "string",
+            defaultValue: "",
+            description: "The font awesome key for the right icon in the button",
+        },
+        { name: "iconPrefix?", type: "string", defaultValue: "fas", description: "The font awesome font prefix" },
+        { name: "type?", type: "string", defaultValue: "button", description: "The HTML button type" },
+        { name: "color?", type: "string", defaultValue: "primary", description: "The color of the button" },
+        {
+            name: "loading?",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Indicates if the button should appear in a loading mode or not",
+        },
+        { name: "disabled?", type: "boolean", defaultValue: "", description: "Indicates if the button is disabled" },
+        {
+            name: "border?",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Indicates if the button should be a border button",
+        },
+        {
+            name: "round?",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Indicates if the button should be a round button",
+        },
+        {
+            name: "onClick?",
+            type: "Function",
+            defaultValue: "false",
+            description: "The function that is triggered when the button is clicked",
+        },
+    ];
+
+    static buttonTypes = [
+        {
+            title: "Regular buttons",
+            description:
+                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
+            props: {},
+        },
+        {
+            title: "Regular buttons",
+            description:
+                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
+            props: { border: true },
+        },
+        {
+            title: "Round buttons",
+            description:
+                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
+            props: { round: true },
+        },
+        {
+            title: "Buttons with icons",
+            description:
+                "Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.",
+            props: { leftIcon: "apple-alt" },
+        },
+    ];
 
     render() {
-
-        let docString = `
-            /**
-             *  Button component can be used to interact with the application through mouse clicks
-             *
-             *  @extends button (html)
-             *
-             *  @property {Object}       style?:        The general style property
-             *  @property {string}       className?:    The general className property
-             *  @property {Array<Node>}  children?:     The general children property
-             *
-             *  @property {string}       leftIcon?:     The font awesome key for the left icon in the button
-             *  @property {string}       rightIcon?:    The font awesome key for the right icon in the button
-             *  @property {string}       iconPrefix?:   The font awesome font prefix (default 'fas')
-             *
-             *  @property {string}       text?:         The text property (WARNING this property is deprecated, use children instead)
-             *  @property {string}       type?:         The HTML button type (default 'button')
-             *  @property {string}       color?:        The color of the button (default 'primary')
-             *  @property {boolean}      loading?:      Indicates if the button should appear in a loading mode or not
-             *  @property {string}       margin?:       The margin of the button
-             *  @property {boolean}      disabled?:     Indicates if the button is disabled
-             *  @property {boolean}      border?:       Indicates if the button should be a border button
-             *  @property {boolean}      round?:        Indicates if the button should be a round button
-             *
-             *  @property {Function}     onClick?:      The function that is triggered when the button is clicked
-             *
-             *
-             */
-        `;
-
-        docString += `\n\t\t\t\t// Regular buttons \n`;
-
-        docString += Object.keys(colors).map((key, i) => {
-            return `
-                <Button key={${i}} color={'${key}'}>
-                    {key}
-                </Button>
-            `
-        }).join("\n");
-
-        docString += `\n\t\t\t\t// Border buttons \n`;
-        docString += Object.keys(colors).map((key, i) => {
-            return `
-                <Button border key={${i}} color={'${key}'}>
-                    {key}
-                </Button>
-            `
-        }).join("\n");
-
-        docString += `\n\t\t\t\t// Round buttons \n`;
-        docString += Object.keys(colors).map((key, i) => {
-            return `
-                <Button round key={${i}} color={'${key}'}>
-                    {key}
-                </Button>
-            `
-        }).join("\n");
-
-        docString += `\n\t\t\t\t// Buttons with icons \n`;
-        docString += Object.keys(colors).map((key, i) => {
-            return `
-                <Button leftIcon={'apple-alt'} key={${i}} color={'${key}'}>
-                    {key}
-                </Button>
-            `
-        }).join("\n");
-
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Buttons</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Buttons gives the user the possibility to interact with the application. Ignite Components offer a large variety of different buttons.
+                                Buttons gives the user the possibility to interact with the application. Ignite
+                                Components offer a large variety of different buttons.
                             </Text>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column text={'center'} padding={1}>
-                            <Header size={3}>Regular buttons</Header>
-                            <Container margin={[0,0,3,0]}>
-                                {Object.keys(colors).map((key, i) => {
-                                    return (
-                                        <Button key={i} color={key}>
-                                            {key}
-                                        </Button>
-                                    )
-                                })}
-                            </Container>
-
-                            <Header size={3}>Border buttons</Header>
-                            <Container margin={[0,0,3,0]}>
-                                {Object.keys(colors).map((key, i) => {
-                                    return (
-                                        <Button border key={i} color={key}>
-                                            {key}
-                                        </Button>
-                                    )
-                                })}
-                            </Container>
-
-                            <Header size={3}>Round buttons</Header>
-                            <Container margin={[0,0,3,0]}>
-                                {Object.keys(colors).map((key, i) => {
-                                    return (
-                                        <Button round key={i} color={key}>
-                                            {key}
-                                        </Button>
-                                    )
-                                })}
-                            </Container>
-
-                            <Header size={3}>Buttons with icons</Header>
-                            <Container>
-                                {Object.keys(colors).map((key, i) => {
-                                    return (
-                                        <Button leftIcon={'apple-alt'} key={i} color={key}>
-                                            {key}
-                                        </Button>
-                                    )
-                                })}
-                            </Container>
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {"@extends <button />"}
+                            </Text>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column padding={1} md={12}>
-                            <Panel bg={'dark'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
-                                <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
-                                        {docString}
-                                    </SyntaxHighlighter>
-                                </Container>
-                            </Panel>
-                        </Column>
-                    </Row>
+                    <PropsTable componentProps={ButtonsPage.componentProps} />
+
+                    {ButtonsPage.buttonTypes.map((type, i) => (
+                        <Container padding={[2, 1]} key={i}>
+                            <Row>
+                                <Column padding={1}>
+                                    <Header size={3}>{type.title}</Header>
+                                    <Text size={1}>{type.description}</Text>
+                                    <Container padding={[1, 0]}>
+                                        <Button {...type.props} key={0} color={"primary"}>
+                                            primary
+                                        </Button>
+
+                                        <Button {...type.props} key={1} color={"secondary"}>
+                                            secondary
+                                        </Button>
+
+                                        <Button {...type.props} key={2} color={"action"}>
+                                            action
+                                        </Button>
+
+                                        <Button {...type.props} key={3} color={"warning"}>
+                                            warning
+                                        </Button>
+                                    </Container>
+                                </Column>
+                            </Row>
+                            <CodeSnippet
+                                snippet={`
+                                    <Button ${Object.keys(type.props)
+                                        .reduce((res, key) => res + ` ${key}={${type.props[key]}}`, "")
+                                        .trim()} key={0} color={"primary"}>
+                                        primary
+                                    </Button>
+
+                                    <Button ${Object.keys(type.props)
+                                        .reduce((res, key) => res + ` ${key}`, "")
+                                        .trim()} key={1} color={"secondary"}>
+                                        secondary
+                                    </Button>
+
+                                    <Button ${Object.keys(type.props)
+                                        .reduce((res, key) => res + ` ${key}`, "")
+                                        .trim()} key={2} color={"action"}>
+                                        action
+                                    </Button>
+
+                                    <Button ${Object.keys(type.props)
+                                        .reduce((res, key) => res + ` ${key}`, "")
+                                        .trim()} key={3} color={"warning"}>
+                                        warning
+                                    </Button>
+                                `}
+                            />
+                        </Container>
+                    ))}
                 </CardContent>
             </Card>
         );

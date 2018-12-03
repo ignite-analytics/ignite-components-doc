@@ -1,22 +1,10 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import {atomDark} from 'react-syntax-highlighter/styles/prism';
+import React, { Component } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
+import { atomDark } from "react-syntax-highlighter/styles/prism";
 
-import {
-    Container,
-    Row,
-    Column,
-    Card,
-    CardHeader,
-    CardContent,
-    Panel,
-    Header,
-    Text
-} from 'ignite-components';
-
+import { Container, Row, Column, Card, CardHeader, CardContent, Panel, Header, Text } from "ignite-components";
 
 class TypographyPage extends Component {
-
     render() {
         const docString = `
             /**
@@ -115,12 +103,12 @@ class TypographyPage extends Component {
         `;
 
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Typography</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
@@ -130,7 +118,7 @@ class TypographyPage extends Component {
                         </Column>
                     </Row>
                     <Row>
-                        <Column text={'center'} padding={1}>
+                        <Column text={"center"} padding={1}>
                             <Row>
                                 <Column sm={1}>
                                     <Header size={1}>H1</Header>
@@ -182,7 +170,7 @@ class TypographyPage extends Component {
                         </Column>
                     </Row>
                     <Row>
-                        <Column text={'center'} padding={1}>
+                        <Column text={"center"} padding={1}>
                             <Row>
                                 <Column sm={1}>
                                     <Text size={1}>P1</Text>
@@ -211,9 +199,9 @@ class TypographyPage extends Component {
                     </Row>
                     <Row>
                         <Column padding={1} md={12}>
-                            <Panel bg={'light'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
+                            <Panel bg={"light"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
                                 <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
+                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
                                         {docString}
                                     </SyntaxHighlighter>
                                 </Container>

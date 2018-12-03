@@ -1,7 +1,7 @@
 /* @flow */
-import React, {Component} from 'react';
-import {Route, withRouter} from "react-router-dom";
-import {Redirect} from "react-router";
+import React, { Component } from "react";
+import { Route, withRouter } from "react-router-dom";
+import { Redirect } from "react-router";
 
 import AlertPage from "./Pages/alerts";
 import ButtonsPage from "./Pages/buttons";
@@ -22,42 +22,58 @@ import {
     Header,
     CardContent,
     NavBarContent,
-    NavBarItem
-} from 'ignite-components';
-import {StyledNavLink} from "../../style";
-import {MarginIcon} from "./style";
+    NavBarItem,
+} from "ignite-components";
+import { StyledNavLink } from "../../style";
+import { MarginIcon } from "./style";
 
 type Props = {
-    match: {isExact: boolean}
-}
+    match: { isExact: boolean },
+};
 
 class ComponentsPage extends Component<Props> {
-
     static pages = [
-        {name: 'Alerts', path: '/components/alerts/', component: AlertPage, icon: 'bell', prefix: 'far'},
-        {name: 'Buttons', path: '/components/buttons/', component: ButtonsPage, icon: 'hand-point-down', prefix: 'far'},
-        {name: 'Cards', path: '/components/cards/', component: CardsPage, icon: 'address-card', prefix: 'far'},
-        {name: 'Dropdowns', path: '/components/dropdown/', component: DropdownPage, icon: 'caret-square-down', prefix: 'far'},
-        {name: 'Forms', path: '/components/form/', component: FormPage, icon: 'file-alt', prefix: 'far'},
-        {name: 'Panels', path: '/components/panels/', component: PanelsPage, icon: 'expand', prefix: 'fas'},
-        {name: 'Progress bars', path: '/components/progress-bar/', component: ProgressBarPage, icon: 'bars', prefix: 'fas'},
-        {name: 'Tags', path: '/components/tags/', component: TagsPage, icon: 'tags', prefix: 'fas'},
-        {name: 'Tables', path: '/components/table/', component: TablePage, icon: 'table', prefix: 'fas'},
+        { name: "Alert", path: "/components/alerts/", component: AlertPage, icon: "bell", prefix: "far" },
+        {
+            name: "Button",
+            path: "/components/buttons/",
+            component: ButtonsPage,
+            icon: "hand-point-down",
+            prefix: "far",
+        },
+        { name: "Card", path: "/components/cards/", component: CardsPage, icon: "address-card", prefix: "far" },
+        {
+            name: "Dropdown",
+            path: "/components/dropdown/",
+            component: DropdownPage,
+            icon: "caret-square-down",
+            prefix: "far",
+        },
+        { name: "Form", path: "/components/form/", component: FormPage, icon: "file-alt", prefix: "far" },
+        { name: "Panel", path: "/components/panels/", component: PanelsPage, icon: "expand", prefix: "fas" },
+        {
+            name: "Progress bar",
+            path: "/components/progress-bar/",
+            component: ProgressBarPage,
+            icon: "bars",
+            prefix: "fas",
+        },
+        { name: "Tag", path: "/components/tags/", component: TagsPage, icon: "tags", prefix: "fas" },
+        { name: "Table", path: "/components/table/", component: TablePage, icon: "table", prefix: "fas" },
     ];
 
     render() {
-
         // Handle incomplete route
         if (this.props.match.isExact) {
             return <Redirect to={"/components/alerts/"} />;
         }
 
         return (
-            <Row align={'center'}>
-                <Container width={'1200px'}>
+            <Row align={"center"}>
+                <Container width={"1400px"}>
                     <Row>
                         <Column md={3} padding={1.5}>
-                            <Card bg={'light'}>
+                            <Card bg={"light"}>
                                 <CardHeader>
                                     <Header size={4}>Components</Header>
                                 </CardHeader>
@@ -67,7 +83,7 @@ class ComponentsPage extends Component<Props> {
                                             <Column>
                                                 <StyledNavLink to={page.path}>
                                                     <NavBarItem>
-                                                        <MarginIcon prefix={page.prefix} icon={page.icon}/>
+                                                        <MarginIcon prefix={page.prefix} icon={page.icon} />
                                                         {page.name}
                                                     </NavBarItem>
                                                 </StyledNavLink>

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import {prism} from 'react-syntax-highlighter/styles/prism';
+import React, { Component } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
+import { prism } from "react-syntax-highlighter/styles/prism";
 
 import {
     Container,
@@ -17,32 +17,29 @@ import {
     Panel,
     Header,
     Text,
-} from 'ignite-components';
-import {withRouter} from "react-router-dom";
-
+} from "ignite-components";
+import { withRouter } from "react-router-dom";
 
 class FormPage extends Component {
-
     static selectItems = new Array(100).fill(0).map((x, i) => {
-        return {text: `Item ${i}`, value: i}
+        return { text: `Item ${i}`, value: i };
     });
 
     onSubmit(fields) {
         this.setState({
             errors: {
-                test: ["This is an error"]
+                test: ["This is an error"],
             },
-            fields: fields
+            fields: fields,
         });
     }
 
     state = {
         fields: {},
-        errors: {}
+        errors: {},
     };
 
     render = () => {
-
         const docString = `
             /**
              * Card - The main card component
@@ -75,7 +72,6 @@ class FormPage extends Component {
             <Row>
                 <Column padding={[3, 1, 0, 1]}>
                     <Form onSubmit={(e, fields) => {
-                        console.log(fields);
                         this.setState({fields: fields});
                     }}>
                         <Row alignVertical={'end'}>
@@ -120,12 +116,12 @@ class FormPage extends Component {
         `;
 
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Form</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
@@ -140,39 +136,34 @@ class FormPage extends Component {
                                 errors={["This is a form warning!"]}
                                 onSubmit={(e, fields) => {
                                     this.onSubmit(fields);
-                                }}>
+                                }}
+                            >
                                 <Row>
                                     <Column padding={[0, 1, 0, 0]}>
                                         <Input
                                             watch
-                                            color={'primary'}
+                                            color={"primary"}
                                             errors={this.state.errors["test"]}
-                                            label={'First name'}
-                                            name={'firstname'}/>
+                                            label={"First name"}
+                                            name={"firstname"}
+                                        />
                                     </Column>
                                     <Column>
-                                        <Input
-                                            watch
-                                            label={'Last name'}
-                                            name={'lastname'}
-                                            value={'Rolfsen'}/>
+                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
                                     </Column>
                                 </Row>
-                                <Row alignVertical={'center'} padding={[1, 0]}>
+                                <Row alignVertical={"center"} padding={[1, 0]}>
                                     <Column padding={[0, 1, 0, 0]}>
-                                        <Select
-                                            watch
-                                            multiSelect={true}
-                                            name={'fruit'}
-                                            items={FormPage.selectItems}/>
+                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
                                     </Column>
                                     <Column>
                                         <Input
                                             watch
-                                            color={'secondary'}
-                                            type={'checkbox'}
-                                            label={'Is active'}
-                                            name={'active'}/>
+                                            color={"secondary"}
+                                            type={"checkbox"}
+                                            label={"Is active"}
+                                            name={"active"}
+                                        />
                                     </Column>
                                 </Row>
                                 <Row>
@@ -180,12 +171,15 @@ class FormPage extends Component {
                                         <TextArea
                                             watch
                                             height={10}
-                                            value={'This is an initial text'}
-                                            name={'description'}/>
+                                            value={"This is an initial text"}
+                                            name={"description"}
+                                        />
                                     </Column>
                                 </Row>
                                 <Row>
-                                    <Button margin={[1, 0]} type={'submit'}>Submit</Button>
+                                    <Button margin={[1, 0]} type={"submit"}>
+                                        Submit
+                                    </Button>
                                 </Row>
                             </Form>
                         </Column>
@@ -193,16 +187,16 @@ class FormPage extends Component {
                     <Row>
                         <Column padding={1}>
                             <Header size={4}>Result</Header>
-                            <Container bg={'stable'} color={'primary'} padding={1}>
+                            <Container bg={"stable"} color={"primary"} padding={1}>
                                 <Text size={1}>{JSON.stringify(this.state.fields, null, 2)}</Text>
                             </Container>
                         </Column>
                     </Row>
                     <Row>
                         <Column padding={1} md={12}>
-                            <Panel bg={'light'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
+                            <Panel bg={"light"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
                                 <Container>
-                                    <SyntaxHighlighter language='jsx' style={prism}>
+                                    <SyntaxHighlighter language="jsx" style={prism}>
                                         {docString}
                                     </SyntaxHighlighter>
                                 </Container>
@@ -212,7 +206,7 @@ class FormPage extends Component {
                 </CardContent>
             </Card>
         );
-    }
+    };
 }
 
 export default withRouter(FormPage);

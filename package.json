@@ -12,7 +12,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-syntax-highlighter": "^8.0.1",
-    "styled-components": "3.3.3",
+    "strip-indent": "^2.0.0",
+    "styled-components": "^4.1.2",
     "url-parse": "^1.4.3"
   },
   "scripts": {
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "flow-bin": "^0.83.0",
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.0.1",
+    "prettier": "^1.15.3"
   }
 }

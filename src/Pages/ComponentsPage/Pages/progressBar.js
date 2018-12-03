@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import { atomDark } from 'react-syntax-highlighter/styles/prism';
+import React, { Component } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
+import { atomDark } from "react-syntax-highlighter/styles/prism";
 
 import {
     Container,
@@ -12,13 +12,11 @@ import {
     Panel,
     Header,
     Text,
-    ProgressBar
-} from 'ignite-components';
-import {withRouter} from "react-router-dom";
-
+    ProgressBar,
+} from "ignite-components";
+import { withRouter } from "react-router-dom";
 
 class ProgressBarPage extends Component {
-
     render() {
         const docString = `
             /**
@@ -95,86 +93,86 @@ class ProgressBarPage extends Component {
         `;
 
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Progress bar</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam vel
-                                rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non condimentum orci
-                                porttitor quis.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam
+                                vel rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non
+                                condimentum orci porttitor quis.
                             </Text>
                         </Column>
                     </Row>
 
                     {/* Decline */}
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
-                            <ProgressBar progress={10} color={'decline'}>
-                                <Text weight={'bold'}>10%</Text>
+                            <ProgressBar progress={10} color={"decline"}>
+                                <Text weight={"bold"}>10%</Text>
                             </ProgressBar>
                         </Column>
                         <Column padding={1}>
-                            <ProgressBar height={1} round progress={10} color={'decline'} />
+                            <ProgressBar height={1} round progress={10} color={"decline"} />
                         </Column>
                     </Row>
 
                     {/* Warning */}
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
-                            <ProgressBar progress={30} color={'warning'}>
-                                <Text weight={'bold'}>30%</Text>
+                            <ProgressBar progress={30} color={"warning"}>
+                                <Text weight={"bold"}>30%</Text>
                             </ProgressBar>
                         </Column>
                         <Column padding={1}>
-                            <ProgressBar height={1} round progress={30} color={'warning'} />
+                            <ProgressBar height={1} round progress={30} color={"warning"} />
                         </Column>
                     </Row>
 
                     {/* Accept */}
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
-                            <ProgressBar progress={20} color={'accept'}>
-                                <Text weight={'bold'}>20%</Text>
+                            <ProgressBar progress={20} color={"accept"}>
+                                <Text weight={"bold"}>20%</Text>
                             </ProgressBar>
                         </Column>
                         <Column padding={1}>
-                            <ProgressBar height={1} round progress={20} color={'accept'} />
+                            <ProgressBar height={1} round progress={20} color={"accept"} />
                         </Column>
                     </Row>
 
                     {/* Primary */}
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
-                            <ProgressBar progress={70} color={'primary'}>
-                                <Text weight={'bold'}>70%</Text>
+                            <ProgressBar progress={70} color={"primary"}>
+                                <Text weight={"bold"}>70%</Text>
                             </ProgressBar>
                         </Column>
                         <Column padding={1}>
-                            <ProgressBar height={1} round progress={70} color={'primary'} />
+                            <ProgressBar height={1} round progress={70} color={"primary"} />
                         </Column>
                     </Row>
 
                     {/* Stable Dark */}
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
-                            <ProgressBar progress={50} color={'stableDark'}>
-                                <Text weight={'bold'}>50%</Text>
+                            <ProgressBar progress={50} color={"stableDark"}>
+                                <Text weight={"bold"}>50%</Text>
                             </ProgressBar>
                         </Column>
                         <Column padding={1}>
-                            <ProgressBar height={1} round progress={50} color={'stableDark'} />
+                            <ProgressBar height={1} round progress={50} color={"stableDark"} />
                         </Column>
                     </Row>
                     <Row>
                         <Column md={12}>
-                            <Panel bg={'dark'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
+                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
                                 <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
+                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
                                         {docString}
                                     </SyntaxHighlighter>
                                 </Container>

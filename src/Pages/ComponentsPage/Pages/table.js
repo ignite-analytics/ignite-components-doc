@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import { atomDark } from 'react-syntax-highlighter/styles/prism';
+import React, { Component } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
+import { atomDark } from "react-syntax-highlighter/styles/prism";
 
 import {
     Card,
@@ -17,13 +17,11 @@ import {
     TBody,
     Tr,
     Th,
-    Td
-} from 'ignite-components';
-import {withRouter} from "react-router-dom";
-
+    Td,
+} from "ignite-components";
+import { withRouter } from "react-router-dom";
 
 class TablePage extends Component {
-
     render() {
         const docString = `
             /**
@@ -56,104 +54,94 @@ class TablePage extends Component {
         `;
 
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Table</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={[0, 1, 1, 1]}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam vel
-                                rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non condimentum orci
-                                porttitor quis.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam
+                                vel rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non
+                                condimentum orci porttitor quis.
                             </Text>
                         </Column>
                     </Row>
                     <Row>
                         <Column padding={1}>
-                            <Table
-                                headerBg={'dark'}
-                                even={'stable'}
-                                bg={'light'}>
-
+                            <Table headerBg={"dark"} even={"stable"} bg={"light"}>
                                 <THead>
-                                <Tr>
-                                    <Th>Column 1</Th>
-                                    <Th>Column 2</Th>
-                                    <Th>Column 3</Th>
-                                    <Th>Column 4</Th>
-                                </Tr>
+                                    <Tr>
+                                        <Th>Column 1</Th>
+                                        <Th>Column 2</Th>
+                                        <Th>Column 3</Th>
+                                        <Th>Column 4</Th>
+                                    </Tr>
                                 </THead>
 
                                 <TBody>
-                                <Tr>
-                                    <Td>Value 1</Td>
-                                    <Td>Value 2</Td>
-                                    <Td>Value 3</Td>
-                                    <Td>Value 4</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>Value 1</Td>
-                                    <Td>Value 2</Td>
-                                    <Td>Value 3</Td>
-                                    <Td>Value 4</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>Value 1</Td>
-                                    <Td>Value 2</Td>
-                                    <Td>Value 3</Td>
-                                    <Td>Value 4</Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
                                 </TBody>
-
                             </Table>
                         </Column>
                         <Column padding={1}>
-                            <Table
-                                border={['table', 'thead']}
-                                even={'stable'}
-                                bg={'light'}>
-
+                            <Table border={["table", "thead"]} even={"stable"} bg={"light"}>
                                 <THead>
-                                <Tr>
-                                    <Th>Column 1</Th>
-                                    <Th>Column 2</Th>
-                                    <Th>Column 3</Th>
-                                    <Th>Column 4</Th>
-                                </Tr>
+                                    <Tr>
+                                        <Th>Column 1</Th>
+                                        <Th>Column 2</Th>
+                                        <Th>Column 3</Th>
+                                        <Th>Column 4</Th>
+                                    </Tr>
                                 </THead>
 
                                 <TBody>
-                                <Tr>
-                                    <Td>Value 1</Td>
-                                    <Td>Value 2</Td>
-                                    <Td>Value 3</Td>
-                                    <Td>Value 4</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>Value 1</Td>
-                                    <Td>Value 2</Td>
-                                    <Td>Value 3</Td>
-                                    <Td>Value 4</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td>Value 1</Td>
-                                    <Td>Value 2</Td>
-                                    <Td>Value 3</Td>
-                                    <Td>Value 4</Td>
-                                </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
                                 </TBody>
-
                             </Table>
                         </Column>
                     </Row>
                     <Row>
                         <Column md={12}>
-                            <Panel bg={'dark'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
+                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
                                 <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
+                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
                                         {docString}
                                     </SyntaxHighlighter>
                                 </Container>

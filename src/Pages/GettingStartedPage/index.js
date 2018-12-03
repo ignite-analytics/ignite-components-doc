@@ -1,24 +1,25 @@
 /* @flow */
-import React, {Component} from 'react';
-import {withRouter} from "react-router-dom";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-import {
-    Container,
-    Row,
-    Column,
-    Header,
-} from 'ignite-components';
+import { Container, Row, Column, Header, OutsideAlerter } from "ignite-components";
 
-type Props = {}
+type Props = {};
 
 class GettingStartedPage extends Component<Props> {
     render() {
         return (
-            <Row bg={'dark'} align={'center'} padding={5}>
-                <Container width={'1200px'}>
+            <Row bg={"dark"} align={"center"} padding={5}>
+                <Container width={"1200px"}>
                     <Row>
                         <Column>
-                            <Header>Getting Started</Header>
+                            <OutsideAlerter
+                                onOutsideClick={() => {
+                                    console.log("hello");
+                                }}
+                            >
+                                <Header>Getting Started</Header>
+                            </OutsideAlerter>
                         </Column>
                     </Row>
                 </Container>

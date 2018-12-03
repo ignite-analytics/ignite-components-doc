@@ -1,9 +1,8 @@
 /* @flow */
-import React, {Component} from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import { atomDark } from 'react-syntax-highlighter/styles/prism';
+import React, { Component } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/prism";
+import { atomDark } from "react-syntax-highlighter/styles/prism";
 import update from "immutability-helper";
-import styled from "styled-components";
 
 import {
     Button,
@@ -18,32 +17,30 @@ import {
     Panel,
     Header,
     Text,
-    Icon
-} from 'ignite-components';
-import {withRouter} from "react-router-dom";
+} from "ignite-components";
+import { withRouter } from "react-router-dom";
 
-const StyledIcon = styled(Icon, Panel);
-
-type Props = {}
+type Props = {};
 
 type State = {
     open: {
-        [string]: boolean
+        [string]: boolean,
     },
-}
+};
 
 class DropdownPage extends Component<Props, State> {
-
     state: State = {
         open: {},
     };
 
     toggleDropdown = (key: string) => {
-        this.setState((state) => update(this.state, {
-            open: {
-                [key]: {$set: !state.open[key]}
-            }
-        }))
+        this.setState(state =>
+            update(this.state, {
+                open: {
+                    [key]: { $set: !state.open[key] },
+                },
+            })
+        );
     };
 
     render() {
@@ -100,52 +97,57 @@ class DropdownPage extends Component<Props, State> {
         `;
 
         return (
-            <Card bg={'light'}>
+            <Card bg={"light"}>
                 <CardHeader>
                     <Header size={4}>Dropdowns</Header>
                 </CardHeader>
                 <CardContent>
-                    <Row alignVertical={'center'}>
+                    <Row alignVertical={"center"}>
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam vel
-                                rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non condimentum orci
-                                porttitor quis.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam
+                                vel rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non
+                                condimentum orci porttitor quis.
                             </Text>
-                            <StyledIcon icon={'plus'} color={'primary'} />
                         </Column>
                     </Row>
                     <Row>
-                        <Column text={'center'} padding={1}>
+                        <Column text={"center"} padding={1}>
                             <DropdownContainer>
-
                                 {/* Trigger */}
-                                <Button
-                                    color={'light'}
-                                    onClick={() => this.toggleDropdown('light')}>
+                                <Button color={"light"} onClick={() => this.toggleDropdown("light")}>
                                     Toggle Light Dropdown
                                 </Button>
 
                                 {/* Content */}
-                                <Dropdown width={'300px'} open={this.state.open['light']} arrow={true} bg={'light'} padding={2}>
+                                <Dropdown
+                                    width={"300px"}
+                                    open={this.state.open["light"]}
+                                    arrow={true}
+                                    bg={"light"}
+                                    padding={2}
+                                >
                                     <Header size={3}>A light dropdown</Header>
                                     <Text>This is a dropdown with some content</Text>
                                 </Dropdown>
                             </DropdownContainer>
                         </Column>
-                        <Column text={'center'} padding={1}>
+                        <Column text={"center"} padding={1}>
                             <DropdownContainer>
-
                                 {/* Trigger */}
-                                <Button
-                                    color={'dark'}
-                                    onClick={() => this.toggleDropdown('dark')}>
+                                <Button color={"dark"} onClick={() => this.toggleDropdown("dark")}>
                                     Toggle Dark Dropdown
                                 </Button>
 
                                 {/* Content */}
-                                <Dropdown width={'300px'} open={this.state.open['dark']} arrow={true} bg={'dark'} padding={2}>
+                                <Dropdown
+                                    width={"300px"}
+                                    open={this.state.open["dark"]}
+                                    arrow={true}
+                                    bg={"dark"}
+                                    padding={2}
+                                >
                                     <Header size={3}>A dark dropdown</Header>
                                     <Text>This is a dropdown with some content</Text>
                                 </Dropdown>
@@ -154,9 +156,9 @@ class DropdownPage extends Component<Props, State> {
                     </Row>
                     <Row>
                         <Column padding={1} md={12}>
-                            <Panel bg={'dark'} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
+                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
                                 <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language='jsx' style={atomDark}>
+                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
                                         {docString}
                                     </SyntaxHighlighter>
                                 </Container>
