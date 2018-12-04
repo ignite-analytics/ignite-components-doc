@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { prism } from "react-syntax-highlighter/styles/prism";
 
 import {
     Container,
@@ -18,9 +16,37 @@ import {
     Header,
     Text,
 } from "ignite-components";
+
 import { withRouter } from "react-router-dom";
+import CodeSnippet from "../../../Components/CodeSnippet";
+import type { PropertyItem } from "../../../Components/PropsTable/types";
+import PropsTable from "../../../Components/PropsTable";
 
 class FormPage extends Component {
+    static formProps: Array<PropertyItem> = [
+        { name: "style?", type: "Object", defaultValue: "1.5em", description: "The general style property" },
+        { name: "className?", type: "string", defaultValue: "", description: "The general className property" },
+        { name: "children?", type: "Array<Node>", defaultValue: "fas", description: "The general children property" },
+        {
+            name: "errors?",
+            type: "Array<string>",
+            defaultValue: "[]",
+            description: "Array containing errors related to the form",
+        },
+        {
+            name: "onSubmit",
+            type: "Function(e, values)",
+            defaultValue: "",
+            description: "The function to be called when the form is submitted.",
+        },
+    ];
+
+    static inputProps: Array<PropertyItem> = [
+        { name: "style?", type: "Object", defaultValue: "1.5em", description: "The general style property" },
+        { name: "className?", type: "string", defaultValue: "", description: "The general className property" },
+        { name: "children?", type: "Array<Node>", defaultValue: "fas", description: "The general children property" },
+    ];
+
     static selectItems = new Array(100).fill(0).map((x, i) => {
         return { text: `Item ${i}`, value: i };
     });
@@ -40,81 +66,6 @@ class FormPage extends Component {
     };
 
     render = () => {
-        const docString = `
-            /**
-             * Card - The main card component
-             *
-             * @extends Container
-             *
-             */
-            
-            /**
-             * CardHeader - The card header component
-             *
-             * @extends Container
-             *
-             */
-            
-            /**
-             * CardContent - The card content component
-             *
-             * @extends Container
-             *
-             */
-            
-            /**
-             * CardFooter - The card footer component
-             *
-             * @extends Container
-             *
-             */
-             
-            <Row>
-                <Column padding={[3, 1, 0, 1]}>
-                    <Form onSubmit={(e, fields) => {
-                        this.setState({fields: fields});
-                    }}>
-                        <Row alignVertical={'end'}>
-                            <Column padding={[0, 1, 0, 0]}>
-                                <Input watch label={'First name'} name={'firstname'}/>
-                            </Column>
-                            <Column>
-                                <Input watch label={'Last name'} name={'lastname'} value={'Rolfsen'}/>
-                            </Column>
-                        </Row>
-                        <Row alignVertical={'center'} padding={[1, 0]}>
-                            <Column padding={[0, 1, 0, 0]}>
-                                <Select
-                                    watch
-                                    multiSelect={true}
-                                    name={'fruit'}
-                                    items={FormPage.selectItems}/>
-                            </Column>
-                            <Column>
-                                <Input
-                                    watch
-                                    type={'checkbox'}
-                                    label={'Is active'}
-                                    name={'active'}/>
-                            </Column>
-                        </Row>
-                        <Row>
-                            <Column>
-                                <TextArea
-                                    watch
-                                    height={10}
-                                    value={'This is an initial text'}
-                                    name={'description'}/>
-                            </Column>
-                        </Row>
-                        <Row>
-                            <Button margin={[1, 0]} type={'submit'}>Submit</Button>
-                        </Row>
-                    </Form>
-                </Column>
-            </Row>
-        `;
-
         return (
             <Card bg={"light"}>
                 <CardHeader>
@@ -126,27 +77,156 @@ class FormPage extends Component {
                             <Header size={4}>General</Header>
                             <Text size={1}>
                                 Ignite Components comes with a form component that watches fields in the form, and
-                                includes them in the submit form much like a regular HTML form.
+                                includes them in the submit form much like a regular HTML form. This means that the
+                                parent component of the form does not need to listen to value changes in the different
+                                input fields.
+                            </Text>
+                        </Column>
+                    </Row>
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {`@extends <form />`}
+                            </Text>
+                        </Column>
+                    </Row>
+                    <PropsTable componentProps={FormPage.formProps} />
+
+                    {/* Input component */}
+                    <Row alignVertical={"center"}>
+                        <Column padding={1}>
+                            <Header size={4}>The Input Component</Header>
+                            <Text size={1}>
+                                Ignite Components comes with a form component that watches fields in the form, and
+                                includes them in the submit form much like a regular HTML form. This means that the
+                                parent component of the form does not need to listen to value changes in the different
+                                input fields.
+                            </Text>
+                        </Column>
+                    </Row>
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {`@extends <input />`}
+                            </Text>
+                        </Column>
+                    </Row>
+                    <PropsTable componentProps={FormPage.inputProps} />
+
+                    <Row alignVertical={"center"}>
+                        <Column padding={1}>
+                            <Header size={4}>Regular Input</Header>
+                            <Text size={1}>
+                                Ignite Components comes with a form component that watches fields in the form, and
+                                includes them in the submit form much like a regular HTML form. This means that the
+                                parent component of the form does not need to listen to value changes in the different
+                                input fields.
+                            </Text>
+                        </Column>
+                    </Row>
+
+                    <Row>
+                        <Column padding={1}>
+                            <Input label={"First name"} name={"firstname"} />
+                        </Column>
+                        <Column padding={1}>
+                            <Input color={"primary"} label={"With focus color"} name={"lastname"} />
+                        </Column>
+                        <Column padding={1}>
+                            <Input
+                                label={"With suggestions"}
+                                name={"firstname"}
+                                suggestions={[{ text: "Volvo" }, { text: "BMW" }, { text: "Tesla" }, { text: "Ford" }]}
+                            />
+                        </Column>
+                        <Column padding={1}>
+                            <Input color={"primary"} label={"Disabled"} name={"disabled"} disabled />
+                        </Column>
+                    </Row>
+
+                    <CodeSnippet
+                        snippet={`
+                        <Row>
+                            <Column padding={1}>
+                                <Input label={"First name"} name={"firstname"} />
+                            </Column>
+                            <Column padding={1}>
+                                <Input color={"primary"} label={"With focus color"} name={"lastname"} />
+                            </Column>
+                            <Column padding={1}>
+                                <Input
+                                    label={"With suggestions"}
+                                    name={"firstname"}
+                                    suggestions={[{ text: "Volvo" }, { text: "BMW" }, { text: "Tesla" }, { text: "Ford" }]}
+                                />
+                            </Column>
+                        </Row>
+                    `}
+                    />
+
+                    <Row alignVertical={"center"}>
+                        <Column padding={1}>
+                            <Header size={4}>Checkbox Input</Header>
+                            <Text size={1}>
+                                Ignite Components comes with a form component that watches fields in the form, and
+                                includes them in the submit form much like a regular HTML form. This means that the
+                                parent component of the form does not need to listen to value changes in the different
+                                input fields.
+                            </Text>
+                        </Column>
+                    </Row>
+
+                    <Row>
+                        <Column md={6} padding={[1, 3]}>
+                            <Input
+                                color={"decline"}
+                                label={"Agree to our evil terms"}
+                                name={"firstname"}
+                                type={"checkbox"}
+                            />
+                        </Column>
+                        <Column md={6} padding={[1, 3]}>
+                            <Input disabled label={"I am disabled"} name={"firstname"} type={"checkbox"} />
+                        </Column>
+                    </Row>
+
+                    <CodeSnippet
+                        snippet={`
+                        <Row>
+                            <Column md={6} padding={[1, 3]}>
+                                <Input
+                                    color={"decline"}
+                                    label={"Agree to our evil terms"}
+                                    name={"firstname"}
+                                    type={"checkbox"}
+                                />
+                            </Column>
+                            <Column md={6} padding={[1, 3]}>
+                                <Input disabled label={"I am disabled"} name={"firstname"} type={"checkbox"} />
+                            </Column>
+                        </Row>
+                    `}
+                    />
+
+                    <Row alignVertical={"center"}>
+                        <Column padding={1}>
+                            <Header size={4}>Full form example</Header>
+                            <Text size={1}>
+                                Below is a full example of a form displayed with the different form components.
                             </Text>
                         </Column>
                     </Row>
                     <Row>
-                        <Column padding={[3, 1, 0, 1]}>
+                        <Column padding={[2, 1, 0, 1]}>
                             <Form
-                                errors={["This is a form warning!"]}
+                                errors={["This is a form error!"]}
                                 onSubmit={(e, fields) => {
                                     this.onSubmit(fields);
                                 }}
                             >
                                 <Row>
                                     <Column padding={[0, 1, 0, 0]}>
-                                        <Input
-                                            watch
-                                            color={"primary"}
-                                            errors={this.state.errors["test"]}
-                                            label={"First name"}
-                                            name={"firstname"}
-                                        />
+                                        <Input watch color={"primary"} label={"First name"} name={"firstname"} />
                                     </Column>
                                     <Column>
                                         <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
@@ -192,17 +272,54 @@ class FormPage extends Component {
                             </Container>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column padding={1} md={12}>
-                            <Panel bg={"light"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
-                                <Container>
-                                    <SyntaxHighlighter language="jsx" style={prism}>
-                                        {docString}
-                                    </SyntaxHighlighter>
-                                </Container>
-                            </Panel>
-                        </Column>
-                    </Row>
+                    <CodeSnippet
+                        snippet={`
+                            <Form
+                                errors={["This is a form warning!"]}
+                                onSubmit={(e, fields) => {
+                                    this.onSubmit(fields);
+                                }}
+                            >
+                                <Row>
+                                    <Column padding={[0, 1, 0, 0]}>
+                                        <Input watch color={"primary"} label={"First name"} name={"firstname"} />
+                                    </Column>
+                                    <Column>
+                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
+                                    </Column>
+                                </Row>
+                                <Row alignVertical={"center"} padding={[1, 0]}>
+                                    <Column padding={[0, 1, 0, 0]}>
+                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
+                                    </Column>
+                                    <Column>
+                                        <Input
+                                            watch
+                                            color={"secondary"}
+                                            type={"checkbox"}
+                                            label={"Is active"}
+                                            name={"active"}
+                                        />
+                                    </Column>
+                                </Row>
+                                <Row>
+                                    <Column>
+                                        <TextArea
+                                            watch
+                                            height={10}
+                                            value={"This is an initial text"}
+                                            name={"description"}
+                                        />
+                                    </Column>
+                                </Row>
+                                <Row>
+                                    <Button margin={[1, 0]} type={"submit"}>
+                                        Submit
+                                    </Button>
+                                </Row>
+                            </Form>
+                        `}
+                    />
                 </CardContent>
             </Card>
         );
