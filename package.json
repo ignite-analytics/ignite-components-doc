@@ -1,5 +1,5 @@
 {
-  "name": "ignite-component-dev-env",
+  "name": "ignite-components-doc",
   "version": "0.1.0",
   "private": true,
   "homepage": "http://ignite-analytics.github.io/ignite-components-doc",
@@ -12,7 +12,6 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-syntax-highlighter": "^8.0.1",
-    "strip-indent": "^2.0.0",
     "styled-components": "^4.1.2",
     "url-parse": "^1.4.3"
   },

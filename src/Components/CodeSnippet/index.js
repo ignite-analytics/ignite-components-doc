@@ -2,7 +2,7 @@
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter/prism";
 import { prism } from "react-syntax-highlighter/styles/prism";
-import stripIndent from "strip-indent";
+import { stripIndent } from "../../Lib/strip-indent";
 
 import { Container, Row, Column, Panel, Header } from "ignite-components";
 
