@@ -33,39 +33,41 @@ type Props = {
 
 class ComponentsPage extends Component<Props> {
     static pages = [
-        { name: "Alert", path: "/components/alerts/", component: AlertPage, icon: "bell", prefix: "far" },
+        { name: "Alert", path: "components/alerts/", component: AlertPage, icon: "bell", prefix: "far" },
         {
             name: "Button",
-            path: "/components/buttons/",
+            path: "components/buttons/",
             component: ButtonsPage,
             icon: "hand-point-down",
             prefix: "far",
         },
-        { name: "Card", path: "/components/cards/", component: CardsPage, icon: "address-card", prefix: "far" },
+        { name: "Card", path: "components/cards/", component: CardsPage, icon: "address-card", prefix: "far" },
         {
             name: "Dropdown",
-            path: "/components/dropdown/",
+            path: "components/dropdown/",
             component: DropdownPage,
             icon: "caret-square-down",
             prefix: "far",
         },
-        { name: "Form", path: "/components/form/", component: FormPage, icon: "file-alt", prefix: "far" },
-        { name: "Panel", path: "/components/panels/", component: PanelsPage, icon: "expand", prefix: "fas" },
+        { name: "Form", path: "components/form/", component: FormPage, icon: "file-alt", prefix: "far" },
+        { name: "Panel", path: "components/panels/", component: PanelsPage, icon: "expand", prefix: "fas" },
         {
             name: "Progress bar",
-            path: "/components/progress-bar/",
+            path: "components/progress-bar/",
             component: ProgressBarPage,
             icon: "bars",
             prefix: "fas",
         },
-        { name: "Tag", path: "/components/tags/", component: TagsPage, icon: "tags", prefix: "fas" },
-        { name: "Table", path: "/components/table/", component: TablePage, icon: "table", prefix: "fas" },
+        { name: "Tag", path: "components/tags/", component: TagsPage, icon: "tags", prefix: "fas" },
+        { name: "Table", path: "components/table/", component: TablePage, icon: "table", prefix: "fas" },
     ];
 
     render() {
+        let baseUrl: string = process.env.BASE_URL ? process.env.BASE_URL : "/";
+
         // Handle incomplete route
         if (this.props.match.isExact) {
-            return <Redirect to={"/components/alerts/"} />;
+            return <Redirect to={baseUrl + "components/alerts/"} />;
         }
 
         return (
@@ -81,7 +83,7 @@ class ComponentsPage extends Component<Props> {
                                     {ComponentsPage.pages.map((page, i) => (
                                         <NavBarContent key={i}>
                                             <Column>
-                                                <StyledNavLink to={page.path}>
+                                                <StyledNavLink to={baseUrl + page.path}>
                                                     <NavBarItem>
                                                         <MarginIcon prefix={page.prefix} icon={page.icon} />
                                                         {page.name}
@@ -95,7 +97,7 @@ class ComponentsPage extends Component<Props> {
                         </Column>
                         <Column md={9} padding={1.5}>
                             {ComponentsPage.pages.map((page, i) => (
-                                <Route key={`page-${i}`} path={page.path} component={page.component} />
+                                <Route key={`page-${i}`} path={baseUrl + page.path} component={page.component} />
                             ))}
                         </Column>
                     </Row>

@@ -27,15 +27,17 @@ type Props = {
 
 class LayoutPage extends Component<Props> {
     static pages = [
-        { name: "Container", path: "/layout/container/", component: ContainerPage, icon: "boxes", prefix: "fas" },
-        { name: "Grid", path: "/layout/grid/", component: GridPage, icon: "th", prefix: "fas" },
-        { name: "Typography", path: "/layout/typography/", component: TypographyPage, icon: "font", prefix: "fas" },
+        { name: "Container", path: "layout/container/", component: ContainerPage, icon: "boxes", prefix: "fas" },
+        { name: "Grid", path: "layout/grid/", component: GridPage, icon: "th", prefix: "fas" },
+        { name: "Typography", path: "layout/typography/", component: TypographyPage, icon: "font", prefix: "fas" },
     ];
 
     render() {
+        let baseUrl: string = process.env.BASE_URL ? process.env.BASE_URL : "/";
+
         // Handle incomplete route
         if (this.props.match.isExact) {
-            return <Redirect to={"/layout/container/"} />;
+            return <Redirect to={baseUrl + "/layout/container/"} />;
         }
 
         return (
@@ -51,7 +53,7 @@ class LayoutPage extends Component<Props> {
                                     {LayoutPage.pages.map((page, i) => (
                                         <NavBarContent key={i}>
                                             <Column>
-                                                <StyledNavLink to={page.path}>
+                                                <StyledNavLink to={baseUrl + page.path}>
                                                     <NavBarItem>
                                                         <MarginIcon prefix={page.prefix} icon={page.icon} />
                                                         {page.name}
@@ -65,7 +67,7 @@ class LayoutPage extends Component<Props> {
                         </Column>
                         <Column md={9} padding={1.5}>
                             {LayoutPage.pages.map((page, i) => (
-                                <Route key={`page-${i}`} path={page.path} component={page.component} />
+                                <Route key={`page-${i}`} path={baseUrl + page.path} component={page.component} />
                             ))}
                         </Column>
                     </Row>
