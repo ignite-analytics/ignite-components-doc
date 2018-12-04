@@ -1,4 +1,3 @@
-/* @flow */
 import React, { Component } from "react";
 import logo from "./Assets/logo-white-border.png";
 import { BrowserRouter, Route } from "react-router-dom";
@@ -11,28 +10,25 @@ import LayoutPage from "./Pages/LayoutPage";
 
 import { FillRow, StyledLogo, StyledNavLink } from "./style";
 
-type Props = {};
-
-class App extends Component<Props> {
+class App extends Component {
     static pages = [
-        { name: "Home", path: "home/", component: HomePage },
-        { name: "Getting Started", path: "getting-started/", component: GettingStartedPage },
-        { name: "Layout", path: "layout/", component: LayoutPage },
-        { name: "Components", path: "components/", component: ComponentsPage },
+        { name: "Home", path: "/", component: HomePage },
+        { name: "Getting Started", path: "/getting-started/", component: GettingStartedPage },
+        { name: "Layout", path: "/layout/", component: LayoutPage },
+        { name: "Components", path: "/components/", component: ComponentsPage },
     ];
 
     render = () => {
-        let baseUrl: string = process.env.BASE_URL ? process.env.BASE_URL : "/";
-
+        let baseUrl = process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "/";
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={baseUrl}>
                 <div>
                     <NavBar fixed padding={1} bg={"dark"} alignVertical={"center"}>
                         <StyledLogo src={logo} alt="Ignite Components Logo" />
                         <Column padding={[0, 1]}>
                             <NavBarContent>
                                 {App.pages.map((page, i) => (
-                                    <StyledNavLink key={i} activeClassName={"active"} to={baseUrl + page.path}>
+                                    <StyledNavLink key={i} activeClassName={"active"} to={page.path}>
                                         <NavBarItem>{page.name}</NavBarItem>
                                     </StyledNavLink>
                                 ))}
@@ -46,7 +42,7 @@ class App extends Component<Props> {
                     <FillRow bg={"stableLight"} padding={[6, 0, 5, 0]} align={"center"}>
                         <Column>
                             {App.pages.map((page, i) => (
-                                <Route key={`page-${i}`} path={baseUrl + page.path} component={page.component} />
+                                <Route key={`page-${i}`} path={page.path} component={page.component} />
                             ))}
                         </Column>
                     </FillRow>

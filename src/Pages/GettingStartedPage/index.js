@@ -13,13 +13,7 @@ class GettingStartedPage extends Component<Props> {
                 <Container width={"1200px"}>
                     <Row>
                         <Column>
-                            <OutsideAlerter
-                                onOutsideClick={() => {
-                                    console.log("hello");
-                                }}
-                            >
-                                <Header>Getting Started</Header>
-                            </OutsideAlerter>
+                            <Header>Getting Started</Header>
                         </Column>
                     </Row>
                 </Container>

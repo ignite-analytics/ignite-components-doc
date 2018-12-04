@@ -2,7 +2,7 @@
   "name": "ignite-components-doc",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ignite-analytics.github.io/ignite-components-doc",
+  "homepage": "http://ignite-analytics.github.io/ignite-components-doc/",
   "dependencies": {
     "immutability-helper": "^2.7.1",
     "normalize.css": "^8.0.0",
@@ -12,6 +12,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-syntax-highlighter": "^8.0.1",
+    "serve": "^10.1.1",
     "styled-components": "^4.1.2",
     "url-parse": "^1.4.3"
   },
