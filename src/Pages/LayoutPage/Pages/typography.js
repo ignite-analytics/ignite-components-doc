@@ -1,94 +1,63 @@
 import React, { Component } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { atomDark } from "react-syntax-highlighter/styles/prism";
 
-import { Container, Row, Column, Card, CardHeader, CardContent, Panel, Header, Text } from "ignite-components";
+import {
+    Container,
+    Row,
+    Column,
+    Card,
+    CardHeader,
+    CardContent,
+    Header,
+    Text,
+    Table,
+    THead,
+    TBody,
+    Tr,
+    Td,
+    Th,
+} from "ignite-components";
+
+import type { PropertyItem } from "../../../Components/PropsTable/types";
+import PropsTable from "../../../Components/PropsTable";
 
 class TypographyPage extends Component {
-    render() {
-        const docString = ` 
-            <Row>
-                <Column text={'center'} padding={1}>
-                    <Row>
-                        <Column sm={1}>
-                            <Header size={1}>H1</Header>
-                        </Column>
-                        <Column>
-                            <Header size={1}>Largest header</Header>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column sm={1}>
-                            <Header size={2}>H2</Header>
-                        </Column>
-                        <Column>
-                            <Header size={2}>Large header</Header>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column sm={1}>
-                            <Header size={3}>H3</Header>
-                        </Column>
-                        <Column>
-                            <Header size={3}>Medium header</Header>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column sm={1}>
-                            <Header size={4}>H4</Header>
-                        </Column>
-                        <Column>
-                            <Header size={4}>Regular header</Header>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column sm={1}>
-                            <Header size={5}>H5</Header>
-                        </Column>
-                        <Column>
-                            <Header size={5}>Small header</Header>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column sm={1}>
-                            <Header size={6}>H6</Header>
-                        </Column>
-                        <Column>
-                            <Header size={6}>Smallest header</Header>
-                        </Column>
-                    </Row>
-                </Column>
-            </Row>
-            <Row>
-                <Column text={'center'} padding={1}>
-                    <Row>
-                        <Column sm={1}>
-                            <Text size={1}>P1</Text>
-                        </Column>
-                        <Column>
-                            <Text size={1}>Largest paragraph</Text>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column sm={1}>
-                            <Text size={2}>P2</Text>
-                        </Column>
-                        <Column>
-                            <Text size={2}>Medium paragraph</Text>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column sm={1}>
-                            <Text size={3}>P3</Text>
-                        </Column>
-                        <Column>
-                            <Text size={3}>Smallest paragraph</Text>
-                        </Column>
-                    </Row>
-                </Column>
-            </Row>
-        `;
+    static headerTypes = [
+        { type: "H1", description: "Largest header", size: 1 },
+        { type: "H2", description: "Large header", size: 2 },
+        { type: "H3", description: "Medium header", size: 3 },
+        { type: "H4", description: "Regular header", size: 4 },
+        { type: "H5", description: "Small header", size: 5 },
+        { type: "H6", description: "Smallest header", size: 6 },
+    ];
 
+    static componentProps: Array<PropertyItem> = [
+        {
+            name: "text",
+            type: "string",
+            defaultValue: "right",
+            description: "Specifies how the text should be aligned",
+        },
+        {
+            name: "color",
+            type: "string",
+            defaultValue: "",
+            description: "Specifies the color of the text",
+        },
+        {
+            name: "size",
+            type: "number",
+            defaultValue: "",
+            description: "Specifies the size the header text",
+        },
+    ];
+
+    static textTypes = [
+        { type: "P1", description: "Largest paragraph", size: 1 },
+        { type: "P2", description: "Medium paragraph", size: 2 },
+        { type: "P3", description: "Smallest paragraph", size: 3 },
+    ];
+
+    render() {
         return (
             <Card bg={"light"}>
                 <CardHeader>
@@ -104,95 +73,102 @@ class TypographyPage extends Component {
                             </Text>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column text={"center"} padding={1}>
-                            <Row>
-                                <Column sm={1}>
-                                    <Header size={1}>H1</Header>
-                                </Column>
-                                <Column>
-                                    <Header size={1}>Largest header</Header>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Column sm={1}>
-                                    <Header size={2}>H2</Header>
-                                </Column>
-                                <Column>
-                                    <Header size={2}>Large header</Header>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Column sm={1}>
-                                    <Header size={3}>H3</Header>
-                                </Column>
-                                <Column>
-                                    <Header size={3}>Medium header</Header>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Column sm={1}>
-                                    <Header size={4}>H4</Header>
-                                </Column>
-                                <Column>
-                                    <Header size={4}>Regular header</Header>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Column sm={1}>
-                                    <Header size={5}>H5</Header>
-                                </Column>
-                                <Column>
-                                    <Header size={5}>Small header</Header>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Column sm={1}>
-                                    <Header size={6}>H6</Header>
-                                </Column>
-                                <Column>
-                                    <Header size={6}>Smallest header</Header>
-                                </Column>
-                            </Row>
+                    <Row alignVertical={"center"}>
+                        <Column padding={1}>
+                            <Header size={4}>Header</Header>
+                            <Text size={1}>
+                                The library offers two different text components; Header and Text. These two components
+                                is meant to render the standard html header and paragraph tags.
+                            </Text>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column text={"center"} padding={1}>
-                            <Row>
-                                <Column sm={1}>
-                                    <Text size={1}>P1</Text>
-                                </Column>
-                                <Column>
-                                    <Text size={1}>Largest paragraph</Text>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Column sm={1}>
-                                    <Text size={2}>P2</Text>
-                                </Column>
-                                <Column>
-                                    <Text size={2}>Medium paragraph</Text>
-                                </Column>
-                            </Row>
-                            <Row>
-                                <Column sm={1}>
-                                    <Text size={3}>P3</Text>
-                                </Column>
-                                <Column>
-                                    <Text size={3}>Smallest paragraph</Text>
-                                </Column>
-                            </Row>
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {"@extends <h1/> | <h2/> | <h3/> | <h4/> | <h5/> | <h6/>"}
+                            </Text>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column padding={1} md={12}>
-                            <Panel bg={"light"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
-                                <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
-                                        {docString}
-                                    </SyntaxHighlighter>
-                                </Container>
-                            </Panel>
+                    <PropsTable componentProps={TypographyPage.componentProps} />
+                    <Row padding={1}>
+                        <Column>
+                            <Table border={["tr"]}>
+                                <THead>
+                                    <Tr>
+                                        <Th>Type</Th>
+                                        <Th>Description</Th>
+                                        <Th>Size</Th>
+                                    </Tr>
+                                </THead>
+                                <TBody>
+                                    {TypographyPage.headerTypes.map((header, i) => (
+                                        <Tr key={`header-${i}`}>
+                                            <Td>
+                                                <Header size={header.size}>{header.type}</Header>
+                                            </Td>
+                                            <Td>
+                                                <Header size={header.size}>{header.description}</Header>
+                                            </Td>
+                                            <Td>
+                                                <Container color={"code"}>
+                                                    <Text code>{header.size}</Text>
+                                                </Container>
+                                            </Td>
+                                        </Tr>
+                                    ))}
+                                </TBody>
+                            </Table>
+                        </Column>
+                    </Row>
+
+                    <Row alignVertical={"center"}>
+                        <Column padding={1}>
+                            <Header size={4}>Text</Header>
+                            <Text size={1}>
+                                The library offers two different text components; Header and Text. These two components
+                                is meant to render the standard html header and paragraph tags.
+                            </Text>
+                        </Column>
+                    </Row>
+
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {"@extends <p/>"}
+                            </Text>
+                        </Column>
+                    </Row>
+
+                    <PropsTable componentProps={TypographyPage.componentProps} />
+
+                    <Row padding={1}>
+                        <Column>
+                            <Table border={["tr"]}>
+                                <THead>
+                                    <Tr>
+                                        <Th>Type</Th>
+                                        <Th>Description</Th>
+                                        <Th>Size</Th>
+                                    </Tr>
+                                </THead>
+                                <TBody>
+                                    {TypographyPage.textTypes.map((header, i) => (
+                                        <Tr key={`header-${i}`}>
+                                            <Td>
+                                                <Text size={header.size}>{header.type}</Text>
+                                            </Td>
+                                            <Td>
+                                                <Text size={header.size}>{header.description}</Text>
+                                            </Td>
+                                            <Td>
+                                                <Container color={"code"}>
+                                                    <Text code>{header.size}</Text>
+                                                </Container>
+                                            </Td>
+                                        </Tr>
+                                    ))}
+                                </TBody>
+                            </Table>
                         </Column>
                     </Row>
                 </CardContent>

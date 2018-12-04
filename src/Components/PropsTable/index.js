@@ -1,6 +1,6 @@
 /* @flow */
 import React from "react";
-import { Container, Row, Column, Header, Text, Table, THead, TBody, Tr, Th, Td } from "ignite-components";
+import { Container, Row, Column, Text, Table, THead, TBody, Tr, Th, Td } from "ignite-components";
 import type { PropertyItem } from "./types";
 
 type Props = {
@@ -12,12 +12,11 @@ class PropsTable extends React.Component<Props> {
         return (
             <Row alignVertical={"center"}>
                 <Column padding={1}>
-                    <Header size={4}>Props</Header>
                     <Container padding={[1, 0]} color={"stableDark"}>
                         <Table border={["tr"]}>
                             <THead>
                                 <Tr>
-                                    <Th>Name</Th>
+                                    <Th>Prop</Th>
                                     <Th>Type</Th>
                                     <Th>Default</Th>
                                     <Th>Description</Th>

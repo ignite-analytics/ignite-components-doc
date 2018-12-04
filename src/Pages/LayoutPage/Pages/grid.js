@@ -8,13 +8,13 @@ import PropsTable from "../../../Components/PropsTable";
 class GridPage extends Component {
     static rowProps: Array<PropertyItem> = [
         {
-            name: "aling",
+            name: "align",
             type: "string",
             defaultValue: "start",
             description: "Specifies how the content should be aligned (horizontal)",
         },
         {
-            name: "alingVertical",
+            name: "alignVertical",
             type: "string",
             defaultValue: "start",
             description: "Specifies how the content should be aligned (vertical)",
