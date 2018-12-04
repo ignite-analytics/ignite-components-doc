@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
-import { Container, Row, Column, Header, OutsideAlerter } from "ignite-components";
+import { Container, Row, Column, Header } from "ignite-components";
 
 type Props = {};
 

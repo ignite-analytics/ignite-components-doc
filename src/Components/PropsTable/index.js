@@ -1,9 +1,10 @@
 /* @flow */
 import React from "react";
 import { Container, Row, Column, Header, Text, Table, THead, TBody, Tr, Th, Td } from "ignite-components";
+import type { PropertyItem } from "./types";
 
 type Props = {
-    componentProps: Array<Object>,
+    componentProps: Array<PropertyItem>,
 };
 
 class PropsTable extends React.Component<Props> {

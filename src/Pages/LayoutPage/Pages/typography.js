@@ -6,20 +6,7 @@ import { Container, Row, Column, Card, CardHeader, CardContent, Panel, Header, T
 
 class TypographyPage extends Component {
     render() {
-        const docString = `
-            /**
-             * Column - The column component in the grid layout setup
-             *
-             * @extends Container
-             *
-             * @property {number}                   sm?: The size the column should have in the small view port
-             * @property {number}                   md?: The size the column should have in the medium view port
-             * @property {number}                   lg?: The size the column should have in the large view port
-             *
-             * @property {string}                   align?: How the column should align according to its parent container
-             *
-             */
-             
+        const docString = ` 
             <Row>
                 <Column text={'center'} padding={1}>
                     <Row>
