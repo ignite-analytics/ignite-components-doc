@@ -58,8 +58,8 @@ class ComponentsPage extends Component<Props> {
             icon: "bars",
             prefix: "fas",
         },
-        { name: "Tag", path: "/components/tags/", component: TagsPage, icon: "tags", prefix: "fas" },
         { name: "Table", path: "/components/table/", component: TablePage, icon: "table", prefix: "fas" },
+        { name: "Tag", path: "/components/tags/", component: TagsPage, icon: "tags", prefix: "fas" },
     ];
 
     render() {

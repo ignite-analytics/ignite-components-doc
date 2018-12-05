@@ -1,97 +1,35 @@
 import React, { Component } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { atomDark } from "react-syntax-highlighter/styles/prism";
 
-import {
-    Container,
-    Card,
-    CardHeader,
-    CardContent,
-    Row,
-    Column,
-    Panel,
-    Header,
-    Text,
-    ProgressBar,
-} from "ignite-components";
+import { Card, CardHeader, CardContent, Row, Column, Header, Text, ProgressBar } from "ignite-components";
+
 import { withRouter } from "react-router-dom";
+import CodeSnippet from "../../../Components/CodeSnippet";
+import type { PropertyItem } from "../../../Components/PropsTable/types";
+import PropsTable from "../../../Components/PropsTable";
 
 class ProgressBarPage extends Component {
+    static componentProps: Array<PropertyItem> = [
+        {
+            name: "progrews?",
+            type: "number",
+            defaultValue: "",
+            description: "The percent of the progress bar that should be filled",
+        },
+        {
+            name: "height?",
+            type: "number",
+            defaultValue: "2em",
+            description: "TThe height of the progress bar",
+        },
+        {
+            name: "round?",
+            type: "boolean",
+            defaultValue: "false",
+            description: "Indicator on if the bar should have completely rounded edges",
+        },
+    ];
+
     render() {
-        const docString = `
-            /**
-             * Container - The most general component in the library
-             *
-             *  @property {string}                  bg:         A key to a color specified in the theme file that is used as background
-             *  @property {string}                  color:      A key to a color specified in the theme file that is used as text color
-             *  @property {Array<number> | number}  padding:    An array of or a single number indicating the padding of the container
-             *  @property {Array<number> | number}  margin:     An array of or a single number indicating the margin of the container
-             *  @property {boolean}                 hover:      An boolean value that indicates if the container should change background if it is hovered
-             *  @property {boolean}                 animated:   An boolean value that indicates if the container should fade in upon rendering
-             *  @property {string}                  text:       An string that specifies the alignment of the inline elements of the container
-             */
-             
-            {/* Decline */}
-            <Row alignVertical={'center'}>
-                <Column padding={1}>
-                    <ProgressBar progress={10} color={'decline'}>
-                        <Text weight={'bold'}>10%</Text>
-                    </ProgressBar>
-                </Column>
-                <Column padding={1}>
-                    <ProgressBar height={1} round progress={10} color={'decline'} />
-                </Column>
-            </Row>
-
-            {/* Warning */}
-            <Row alignVertical={'center'}>
-                <Column padding={1}>
-                    <ProgressBar progress={30} color={'warning'}>
-                        <Text weight={'bold'}>30%</Text>
-                    </ProgressBar>
-                </Column>
-                <Column padding={1}>
-                    <ProgressBar height={1} round progress={30} color={'warning'} />
-                </Column>
-            </Row>
-
-            {/* Accept */}
-            <Row alignVertical={'center'}>
-                <Column padding={1}>
-                    <ProgressBar progress={20} color={'accept'}>
-                        <Text weight={'bold'}>20%</Text>
-                    </ProgressBar>
-                </Column>
-                <Column padding={1}>
-                    <ProgressBar height={1} round progress={20} color={'accept'} />
-                </Column>
-            </Row>
-
-            {/* Primary */}
-            <Row alignVertical={'center'}>
-                <Column padding={1}>
-                    <ProgressBar progress={70} color={'primary'}>
-                        <Text weight={'bold'}>70%</Text>
-                    </ProgressBar>
-                </Column>
-                <Column padding={1}>
-                    <ProgressBar height={1} round progress={70} color={'primary'} />
-                </Column>
-            </Row>
-
-            {/* Stable Dark */}
-            <Row alignVertical={'center'}>
-                <Column padding={1}>
-                    <ProgressBar progress={50} color={'stableDark'}>
-                        <Text weight={'bold'}>50%</Text>
-                    </ProgressBar>
-                </Column>
-                <Column padding={1}>
-                    <ProgressBar height={1} round progress={50} color={'stableDark'} />
-                </Column>
-            </Row>
-        `;
-
         return (
             <Card bg={"light"}>
                 <CardHeader>
@@ -102,12 +40,21 @@ class ProgressBarPage extends Component {
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam
-                                vel rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non
-                                condimentum orci porttitor quis.
+                                The library includes a ProgressBar component that helps visualize the progress of a
+                                task.
                             </Text>
                         </Column>
                     </Row>
+
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {"@extends Column"}
+                            </Text>
+                        </Column>
+                    </Row>
+
+                    <PropsTable componentProps={ProgressBarPage.componentProps} />
 
                     {/* Decline */}
                     <Row alignVertical={"center"}>
@@ -168,17 +115,71 @@ class ProgressBarPage extends Component {
                             <ProgressBar height={1} round progress={50} color={"stableDark"} />
                         </Column>
                     </Row>
-                    <Row>
-                        <Column md={12}>
-                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
-                                <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
-                                        {docString}
-                                    </SyntaxHighlighter>
-                                </Container>
-                            </Panel>
-                        </Column>
-                    </Row>
+
+                    {/* Code snippet */}
+                    <CodeSnippet
+                        snippet={`
+                        {/* Decline */}
+                        <Row alignVertical={"center"}>
+                            <Column padding={1}>
+                                <ProgressBar progress={10} color={"decline"}>
+                                    <Text weight={"bold"}>10%</Text>
+                                </ProgressBar>
+                            </Column>
+                            <Column padding={1}>
+                                <ProgressBar height={1} round progress={10} color={"decline"} />
+                            </Column>
+                        </Row>
+
+                        {/* Warning */}
+                        <Row alignVertical={"center"}>
+                            <Column padding={1}>
+                                <ProgressBar progress={30} color={"warning"}>
+                                    <Text weight={"bold"}>30%</Text>
+                                </ProgressBar>
+                            </Column>
+                            <Column padding={1}>
+                                <ProgressBar height={1} round progress={30} color={"warning"} />
+                            </Column>
+                        </Row>
+
+                        {/* Accept */}
+                        <Row alignVertical={"center"}>
+                            <Column padding={1}>
+                                <ProgressBar progress={20} color={"accept"}>
+                                    <Text weight={"bold"}>20%</Text>
+                                </ProgressBar>
+                            </Column>
+                            <Column padding={1}>
+                                <ProgressBar height={1} round progress={20} color={"accept"} />
+                            </Column>
+                        </Row>
+
+                        {/* Primary */}
+                        <Row alignVertical={"center"}>
+                            <Column padding={1}>
+                                <ProgressBar progress={70} color={"primary"}>
+                                    <Text weight={"bold"}>70%</Text>
+                                </ProgressBar>
+                            </Column>
+                            <Column padding={1}>
+                                <ProgressBar height={1} round progress={70} color={"primary"} />
+                            </Column>
+                        </Row>
+
+                        {/* Stable Dark */}
+                        <Row alignVertical={"center"}>
+                            <Column padding={1}>
+                                <ProgressBar progress={50} color={"stableDark"}>
+                                    <Text weight={"bold"}>50%</Text>
+                                </ProgressBar>
+                            </Column>
+                            <Column padding={1}>
+                                <ProgressBar height={1} round progress={50} color={"stableDark"} />
+                            </Column>
+                        </Row>
+                    `}
+                    />
                 </CardContent>
             </Card>
         );

@@ -1,42 +1,46 @@
 import React, { Component } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { atomDark } from "react-syntax-highlighter/styles/prism";
 
-import { Card, CardHeader, CardContent, Container, Row, Column, Panel, Tag, Header, Text } from "ignite-components";
+import { Card, CardHeader, CardContent, Row, Column, Tag, Header, Text } from "ignite-components";
 import { withRouter } from "react-router-dom";
+import CodeSnippet from "../../../Components/CodeSnippet";
+import PropsTable from "../../../Components/PropsTable";
+import type { PropertyItem } from "../../../Components/PropsTable/types";
 
 class TagsPage extends Component {
+    static componentProps: Array<PropertyItem> = [
+        {
+            name: "iconSize?",
+            type: "string",
+            defaultValue: "",
+            description: "The size of the icons in the tag",
+        },
+        {
+            name: "iconPrefix?",
+            type: "string",
+            defaultValue: "fas",
+            description: "The font awesome font prefix",
+        },
+        {
+            name: "leftIcon?",
+            type: "string",
+            defaultValue: "",
+            description: "The font awesome icon key for an icon on the left side of the text",
+        },
+        {
+            name: "rightIcon?",
+            type: "string",
+            defaultValue: "",
+            description: "The font awesome icon key for an icon on the right side of the text",
+        },
+        {
+            name: "color?",
+            type: "string",
+            defaultValue: "",
+            description: "A key to a color specified in the theme file that is used as background color",
+        },
+    ];
+
     render() {
-        const docString = `
-            /**
-             * Container - The most general component in the library
-             *
-             *  @property {string}                  bg:         A key to a color specified in the theme file that is used as background
-             *  @property {string}                  color:      A key to a color specified in the theme file that is used as text color
-             *  @property {Array<number> | number}  padding:    An array of or a single number indicating the padding of the container
-             *  @property {Array<number> | number}  margin:     An array of or a single number indicating the margin of the container
-             *  @property {boolean}                 hover:      An boolean value that indicates if the container should change background if it is hovered
-             *  @property {boolean}                 animated:   An boolean value that indicates if the container should fade in upon rendering
-             *  @property {string}                  text:       An string that specifies the alignment of the inline elements of the container
-             */
-             
-            <Alert color={'decline'} icon={'exclamation-circle'}>
-                <Text size={1}>This went terrible wrong!</Text>
-            </Alert>
-
-            <Alert color={'warning'} icon={'exclamation-triangle'}>
-                <Text size={1}>This went somewhat wrong...</Text>
-            </Alert>
-
-            <Alert color={'accept'} icon={'check'}>
-                <Text size={1}>This went very good!</Text>
-            </Alert>
-
-            <Alert color={'primary'} icon={'question'}>
-                <Text size={1}>Some information</Text>
-            </Alert>
-        `;
-
         return (
             <Card bg={"light"}>
                 <CardHeader>
@@ -47,12 +51,22 @@ class TagsPage extends Component {
                         <Column padding={1}>
                             <Header size={4}>General</Header>
                             <Text size={1}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam
-                                vel rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non
-                                condimentum orci porttitor quis.
+                                Tags are inline containers of small content that can be used to display messages,
+                                categories and more.
                             </Text>
                         </Column>
                     </Row>
+
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {"@extends <table />"}
+                            </Text>
+                        </Column>
+                    </Row>
+
+                    <PropsTable componentProps={TagsPage.componentProps} />
+
                     <Row>
                         <Column padding={1}>
                             <Tag bg={"decline"} leftIcon={"exclamation-circle"}>
@@ -76,17 +90,29 @@ class TagsPage extends Component {
                             </Tag>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column md={12}>
-                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
-                                <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
-                                        {docString}
-                                    </SyntaxHighlighter>
-                                </Container>
-                            </Panel>
-                        </Column>
-                    </Row>
+                    <CodeSnippet
+                        snippet={`
+                        <Tag bg={"decline"} leftIcon={"exclamation-circle"}>
+                            <Text>This went terrible wrong!</Text>
+                        </Tag>
+
+                        <Tag bg={"warning"} leftIcon={"exclamation-triangle"} hover>
+                            <Text>This went somewhat wrong...</Text>
+                        </Tag>
+
+                        <Tag bg={"accept"} leftIcon={"check"}>
+                            <Text>This went very good!</Text>
+                        </Tag>
+
+                        <Tag bg={"primary"} leftIcon={"question"}>
+                            <Text>Some information</Text>
+                        </Tag>
+
+                        <Tag bg={"stableDark"} rightIcon={"times"} hover>
+                            <Text>Close this</Text>
+                        </Tag>
+                    `}
+                    />
                 </CardContent>
             </Card>
         );

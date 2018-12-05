@@ -1,15 +1,12 @@
+/* @flow */
 import React, { Component } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { atomDark } from "react-syntax-highlighter/styles/prism";
 
 import {
     Card,
     CardHeader,
     CardContent,
-    Container,
     Row,
     Column,
-    Panel,
     Header,
     Text,
     Table,
@@ -20,39 +17,60 @@ import {
     Td,
 } from "ignite-components";
 import { withRouter } from "react-router-dom";
+import CodeSnippet from "../../../Components/CodeSnippet";
+import PropsTable from "../../../Components/PropsTable";
+import type { PropertyItem } from "../../../Components/PropsTable/types";
 
-class TablePage extends Component {
+class TablePage extends Component<{}> {
+    static componentProps: Array<PropertyItem> = [
+        {
+            name: "bg?",
+            type: "string",
+            defaultValue: "",
+            description: "A key to a color specified in the theme file that is used as background",
+        },
+        {
+            name: "color?",
+            type: "string",
+            defaultValue: "",
+            description: "A key to a color specified in the theme file that is used as text color",
+        },
+        {
+            name: "text?",
+            type: "string",
+            defaultValue: "left",
+            description: "Specifies the alignment of the text in the table (options: 'left', 'center', 'right')",
+        },
+        {
+            name: "border?",
+            type: "Array<string>",
+            defaultValue: "",
+            description:
+                "A list of table components that should have a border (options: 'table', 'thead', 'tbody', 'tr', 'td', 'th')",
+        },
+        {
+            name: "headerBg?",
+            type: "string",
+            defaultValue: "",
+            description: "A key to a color specified in the theme file that is used as background for the header",
+        },
+        {
+            name: "even?",
+            type: "string",
+            defaultValue: "light",
+            description:
+                "A key to a color specified in the theme file that is used as background for every even table row",
+        },
+        {
+            name: "odd?",
+            type: "string",
+            defaultValue: "light",
+            description:
+                "A key to a color specified in the theme file that is used as background for every odd table row",
+        },
+    ];
+
     render() {
-        const docString = `
-            /**
-             * Container - The most general component in the library
-             *
-             *  @property {string}                  bg:         A key to a color specified in the theme file that is used as background
-             *  @property {string}                  color:      A key to a color specified in the theme file that is used as text color
-             *  @property {Array<number> | number}  padding:    An array of or a single number indicating the padding of the container
-             *  @property {Array<number> | number}  margin:     An array of or a single number indicating the margin of the container
-             *  @property {boolean}                 hover:      An boolean value that indicates if the container should change background if it is hovered
-             *  @property {boolean}                 animated:   An boolean value that indicates if the container should fade in upon rendering
-             *  @property {string}                  text:       An string that specifies the alignment of the inline elements of the container
-             */
-             
-            <Alert color={'decline'} icon={'exclamation-circle'}>
-                <Text size={1}>This went terrible wrong!</Text>
-            </Alert>
-
-            <Alert color={'warning'} icon={'exclamation-triangle'}>
-                <Text size={1}>This went somewhat wrong...</Text>
-            </Alert>
-
-            <Alert color={'accept'} icon={'check'}>
-                <Text size={1}>This went very good!</Text>
-            </Alert>
-
-            <Alert color={'primary'} icon={'question'}>
-                <Text size={1}>Some information</Text>
-            </Alert>
-        `;
-
         return (
             <Card bg={"light"}>
                 <CardHeader>
@@ -62,13 +80,19 @@ class TablePage extends Component {
                     <Row alignVertical={"center"}>
                         <Column padding={[0, 1, 1, 1]}>
                             <Header size={4}>General</Header>
-                            <Text size={1}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc hendrerit sagittis quam
-                                vel rhoncus. Praesent consequat ultrices justo. Nunc viverra malesuada sem, non
-                                condimentum orci porttitor quis.
+                            <Text size={1}>The table component extends all the regular html table tags.</Text>
+                        </Column>
+                    </Row>
+                    <Row padding={1}>
+                        <Column bg={"stableLight"} padding={1}>
+                            <Text color={"code"} code>
+                                {"@extends <table />"}
                             </Text>
                         </Column>
                     </Row>
+
+                    <PropsTable componentProps={TablePage.componentProps} />
+
                     <Row>
                         <Column padding={1}>
                             <Table headerBg={"dark"} even={"stable"} bg={"light"}>
@@ -137,17 +161,76 @@ class TablePage extends Component {
                             </Table>
                         </Column>
                     </Row>
-                    <Row>
-                        <Column md={12}>
-                            <Panel bg={"dark"} padding={[1, 2]} summary={<Header size={4}>Code snippet</Header>}>
-                                <Container padding={[1, 2]}>
-                                    <SyntaxHighlighter showLineNumbers language="jsx" style={atomDark}>
-                                        {docString}
-                                    </SyntaxHighlighter>
-                                </Container>
-                            </Panel>
+                    <CodeSnippet
+                        snippet={`
+                        <Column padding={1}>
+                            <Table headerBg={"dark"} even={"stable"} bg={"light"}>
+                                <THead>
+                                    <Tr>
+                                        <Th>Column 1</Th>
+                                        <Th>Column 2</Th>
+                                        <Th>Column 3</Th>
+                                        <Th>Column 4</Th>
+                                    </Tr>
+                                </THead>
+
+                                <TBody>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                </TBody>
+                            </Table>
                         </Column>
-                    </Row>
+                        <Column padding={1}>
+                            <Table border={["table", "thead"]} even={"stable"} bg={"light"}>
+                                <THead>
+                                    <Tr>
+                                        <Th>Column 1</Th>
+                                        <Th>Column 2</Th>
+                                        <Th>Column 3</Th>
+                                        <Th>Column 4</Th>
+                                    </Tr>
+                                </THead>
+
+                                <TBody>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                    <Tr>
+                                        <Td>Value 1</Td>
+                                        <Td>Value 2</Td>
+                                        <Td>Value 3</Td>
+                                        <Td>Value 4</Td>
+                                    </Tr>
+                                </TBody>
+                            </Table>
+                        </Column>
+                    `}
+                    />
                 </CardContent>
             </Card>
         );
