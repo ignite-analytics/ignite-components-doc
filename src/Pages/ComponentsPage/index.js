@@ -9,7 +9,9 @@ import CardsPage from "./Pages/cards";
 import DropdownPage from "./Pages/dropdown";
 import FormPage from "./Pages/form";
 import IconPage from "./Pages/icons";
+import IconButtonPage from "./Pages/iconButtons";
 import LoaderPage from "./Pages/loaders";
+import ModalPage from "./Pages/modals";
 import PanelsPage from "./Pages/panels";
 import ProgressBarPage from "./Pages/progressBar";
 import TagsPage from "./Pages/tags";
@@ -56,12 +58,12 @@ class ComponentsPage extends Component<Props> {
         {
             name: "IconButton",
             path: "/components/icon-button/",
-            component: FormPage,
+            component: IconButtonPage,
             icon: "hand-point-down",
             prefix: "far",
         },
         { name: "Loader", path: "/components/loaders/", component: LoaderPage, icon: "spinner", prefix: "fas" },
-        { name: "Modal", path: "/components/modals/", component: LoaderPage, icon: "window-restore", prefix: "far" },
+        { name: "Modal", path: "/components/modals/", component: ModalPage, icon: "window-restore", prefix: "far" },
         { name: "Panel", path: "/components/panels/", component: PanelsPage, icon: "expand", prefix: "fas" },
         {
             name: "Progress bar",

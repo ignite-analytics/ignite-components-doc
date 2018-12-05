@@ -10,7 +10,7 @@ import PropsTable from "../../../Components/PropsTable";
 class ProgressBarPage extends Component {
     static componentProps: Array<PropertyItem> = [
         {
-            name: "progrews?",
+            name: "progress?",
             type: "number",
             defaultValue: "",
             description: "The percent of the progress bar that should be filled",
