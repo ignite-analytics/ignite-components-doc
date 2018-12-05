@@ -16,6 +16,7 @@ class App extends Component {
         { name: "Getting Started", path: "/getting-started/", component: GettingStartedPage, exact: false },
         { name: "Layout", path: "/layout/", component: LayoutPage, exact: false },
         { name: "Components", path: "/components/", component: ComponentsPage, exact: false },
+        { name: "Examples", path: "/examples/", component: GettingStartedPage, exact: false },
     ];
 
     render = () => {

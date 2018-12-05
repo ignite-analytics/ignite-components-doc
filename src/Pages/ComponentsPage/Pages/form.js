@@ -175,6 +175,130 @@ class FormPage extends Component {
 
                     <PropsTable componentProps={FormPage.formProps} />
 
+                    <Row alignVertical={"center"}>
+                        <Column padding={1}>
+                            <Header size={4}>Full form example</Header>
+                            <Text size={1}>
+                                Below is a full example of a form displayed with the different form components.
+                            </Text>
+                        </Column>
+                    </Row>
+
+                    <Row>
+                        <Column padding={[2, 1, 0, 1]}>
+                            <Form
+                                errors={["This is a form error!"]}
+                                onSubmit={(e, fields) => {
+                                    this.onSubmit(fields);
+                                }}
+                            >
+                                <Row>
+                                    <Column padding={[0, 1, 0, 0]}>
+                                        <Input
+                                            onChange={(e, value) => {
+                                                console.log(value);
+                                            }}
+                                            watch
+                                            color={"primary"}
+                                            label={"First name"}
+                                            name={"firstname"}
+                                        />
+                                    </Column>
+                                    <Column>
+                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
+                                    </Column>
+                                </Row>
+                                <Row alignVertical={"center"} padding={[1, 0]}>
+                                    <Column padding={[0, 1, 0, 0]}>
+                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
+                                    </Column>
+                                    <Column>
+                                        <Input
+                                            watch
+                                            color={"secondary"}
+                                            type={"checkbox"}
+                                            label={"Is active"}
+                                            name={"active"}
+                                        />
+                                    </Column>
+                                </Row>
+                                <Row>
+                                    <Column>
+                                        <TextArea
+                                            watch
+                                            height={10}
+                                            value={"This is an initial text"}
+                                            name={"description"}
+                                        />
+                                    </Column>
+                                </Row>
+                                <Row>
+                                    <Button margin={[1, 0]} type={"submit"}>
+                                        Submit
+                                    </Button>
+                                </Row>
+                            </Form>
+                        </Column>
+                    </Row>
+                    <Row>
+                        <Column padding={1}>
+                            <Header size={4}>Result</Header>
+                            <Container bg={"stableLight"} color={"code"} padding={1}>
+                                <Text code size={1}>
+                                    {JSON.stringify(this.state.fields, null, 2)}
+                                </Text>
+                            </Container>
+                        </Column>
+                    </Row>
+                    <CodeSnippet
+                        snippet={`
+                            <Form
+                                errors={["This is a form warning!"]}
+                                onSubmit={(e, fields) => {
+                                    this.onSubmit(fields);
+                                }}
+                            >
+                                <Row>
+                                    <Column padding={[0, 1, 0, 0]}>
+                                        <Input watch color={"primary"} label={"First name"} name={"firstname"} />
+                                    </Column>
+                                    <Column>
+                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
+                                    </Column>
+                                </Row>
+                                <Row alignVertical={"center"} padding={[1, 0]}>
+                                    <Column padding={[0, 1, 0, 0]}>
+                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
+                                    </Column>
+                                    <Column>
+                                        <Input
+                                            watch
+                                            color={"secondary"}
+                                            type={"checkbox"}
+                                            label={"Is active"}
+                                            name={"active"}
+                                        />
+                                    </Column>
+                                </Row>
+                                <Row>
+                                    <Column>
+                                        <TextArea
+                                            watch
+                                            height={10}
+                                            value={"This is an initial text"}
+                                            name={"description"}
+                                        />
+                                    </Column>
+                                </Row>
+                                <Row>
+                                    <Button margin={[1, 0]} type={"submit"}>
+                                        Submit
+                                    </Button>
+                                </Row>
+                            </Form>
+                        `}
+                    />
+
                     {/* Input component */}
                     <Row alignVertical={"center"}>
                         <Column padding={1}>
@@ -420,129 +544,6 @@ class FormPage extends Component {
                             </Column>
                         </Row>
                     `}
-                    />
-
-                    <Row alignVertical={"center"}>
-                        <Column padding={1}>
-                            <Header size={4}>Full form example</Header>
-                            <Text size={1}>
-                                Below is a full example of a form displayed with the different form components.
-                            </Text>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column padding={[2, 1, 0, 1]}>
-                            <Form
-                                errors={["This is a form error!"]}
-                                onSubmit={(e, fields) => {
-                                    this.onSubmit(fields);
-                                }}
-                            >
-                                <Row>
-                                    <Column padding={[0, 1, 0, 0]}>
-                                        <Input
-                                            onChange={(e, value) => {
-                                                console.log(value);
-                                            }}
-                                            watch
-                                            color={"primary"}
-                                            label={"First name"}
-                                            name={"firstname"}
-                                        />
-                                    </Column>
-                                    <Column>
-                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
-                                    </Column>
-                                </Row>
-                                <Row alignVertical={"center"} padding={[1, 0]}>
-                                    <Column padding={[0, 1, 0, 0]}>
-                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
-                                    </Column>
-                                    <Column>
-                                        <Input
-                                            watch
-                                            color={"secondary"}
-                                            type={"checkbox"}
-                                            label={"Is active"}
-                                            name={"active"}
-                                        />
-                                    </Column>
-                                </Row>
-                                <Row>
-                                    <Column>
-                                        <TextArea
-                                            watch
-                                            height={10}
-                                            value={"This is an initial text"}
-                                            name={"description"}
-                                        />
-                                    </Column>
-                                </Row>
-                                <Row>
-                                    <Button margin={[1, 0]} type={"submit"}>
-                                        Submit
-                                    </Button>
-                                </Row>
-                            </Form>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column padding={1}>
-                            <Header size={4}>Result</Header>
-                            <Container bg={"stableLight"} color={"code"} padding={1}>
-                                <Text code size={1}>
-                                    {JSON.stringify(this.state.fields, null, 2)}
-                                </Text>
-                            </Container>
-                        </Column>
-                    </Row>
-                    <CodeSnippet
-                        snippet={`
-                            <Form
-                                errors={["This is a form warning!"]}
-                                onSubmit={(e, fields) => {
-                                    this.onSubmit(fields);
-                                }}
-                            >
-                                <Row>
-                                    <Column padding={[0, 1, 0, 0]}>
-                                        <Input watch color={"primary"} label={"First name"} name={"firstname"} />
-                                    </Column>
-                                    <Column>
-                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
-                                    </Column>
-                                </Row>
-                                <Row alignVertical={"center"} padding={[1, 0]}>
-                                    <Column padding={[0, 1, 0, 0]}>
-                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
-                                    </Column>
-                                    <Column>
-                                        <Input
-                                            watch
-                                            color={"secondary"}
-                                            type={"checkbox"}
-                                            label={"Is active"}
-                                            name={"active"}
-                                        />
-                                    </Column>
-                                </Row>
-                                <Row>
-                                    <Column>
-                                        <TextArea
-                                            watch
-                                            height={10}
-                                            value={"This is an initial text"}
-                                            name={"description"}
-                                        />
-                                    </Column>
-                                </Row>
-                                <Row>
-                                    <Button margin={[1, 0]} type={"submit"}>
-                                        Submit
-                                    </Button>
-                                </Row>
-                            </Form>
-                        `}
                     />
                 </CardContent>
             </Card>
