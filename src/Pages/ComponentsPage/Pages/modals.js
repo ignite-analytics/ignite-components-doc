@@ -1,19 +1,7 @@
 import React, { Component } from "react";
 import update from "immutability-helper";
 
-import {
-    Button,
-    Card,
-    CardHeader,
-    CardContent,
-    Row,
-    Column,
-    Loader,
-    Input,
-    Header,
-    Text,
-    Modal,
-} from "ignite-components";
+import { Button, Card, CardHeader, CardContent, Row, Column, Input, Header, Text, Modal } from "ignite-components";
 import { withRouter } from "react-router-dom";
 import CodeSnippet from "../../../Components/CodeSnippet";
 import PropsTable from "../../../Components/PropsTable";
