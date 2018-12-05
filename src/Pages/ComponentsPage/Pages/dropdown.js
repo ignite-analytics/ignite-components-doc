@@ -7,13 +7,11 @@ import {
     Button,
     Dropdown,
     DropdownContainer,
-    Container,
     Card,
     CardHeader,
     CardContent,
     Row,
     Column,
-    Panel,
     Header,
     Text,
 } from "ignite-components";
