@@ -84,7 +84,7 @@ class ComponentsPage extends Component<Props> {
 
         return (
             <Row align={"center"}>
-                <Container width={"1400px"}>
+                <Container width={1400} unit={"px"}>
                     <Row>
                         <Column md={3} padding={1.5}>
                             <Card bg={"light"}>

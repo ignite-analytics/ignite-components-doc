@@ -110,6 +110,12 @@ class FormPage extends Component {
             defaultValue: "Filters the items list",
             description: "A callback for what",
         },
+        {
+            name: "unit?",
+            type: "string",
+            defaultValue: "em",
+            description: "The unit for size properties",
+        },
     ]);
 
     static textAreaProps: Array<PropertyItem> = FormPage.defaultInputProps.concat([
@@ -118,6 +124,12 @@ class FormPage extends Component {
             type: "string",
             defaultValue: "auto",
             description: "The height of the textarea",
+        },
+        {
+            name: "unit?",
+            type: "string",
+            defaultValue: "em",
+            description: "The unit for size properties",
         },
     ]);
 

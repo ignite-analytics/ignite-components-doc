@@ -38,15 +38,15 @@ class DropdownPage extends Component<Props, State> {
         },
         {
             name: "height?",
-            type: "number | string",
+            type: "number",
             defaultValue: "",
-            description: "The height of the dropdown",
+            description: "The height of the dropdown (will be combined with the unit prop)",
         },
         {
             name: "width?",
-            type: "number | string",
+            type: "number",
             defaultValue: "",
-            description: "The width of the dropdown",
+            description: "The width of the dropdown (will be combined with the unit prop)",
         },
         {
             name: "top?",

@@ -58,6 +58,12 @@ class ContainerPage extends Component {
             defaultValue: "false",
             description: "An string that specifies the alignment of the inline elements of the container",
         },
+        {
+            name: "unit?",
+            type: "string",
+            defaultValue: "em",
+            description: "The unit for size properties",
+        },
     ];
 
     render() {
