@@ -24,7 +24,7 @@ class App extends Component {
         return (
             <BrowserRouter basename={baseUrl}>
                 <div>
-                    <NavBar fixed padding={1} bg={"dark"} alignVertical={"center"}>
+                    <NavBar fixed padding={0.5} bg={"dark"} alignVertical={"center"}>
                         <StyledLogo src={logo} alt="Ignite Components Logo" />
                         <Column padding={[0, 1]}>
                             <NavBarContent>

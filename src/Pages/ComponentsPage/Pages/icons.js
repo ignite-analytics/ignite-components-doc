@@ -84,37 +84,37 @@ class IconPage extends Component {
 
                     <Row padding={1} text={"center"}>
                         <Column padding={1}>
-                            <Icon size={"5em"} icon={"font-awesome-flag"} color={"secondary"} prefix={"fab"} />
+                            <Icon size={5} icon={"font-awesome-flag"} color={"secondary"} prefix={"fab"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"5em"} icon={"futbol"} color={"warning"} prefix={"fas"} />
+                            <Icon size={5} icon={"futbol"} color={"warning"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"5em"} color={"decline"} icon={"apple-alt"} prefix={"fas"} />
+                            <Icon size={5} color={"decline"} icon={"apple-alt"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"5em"} color={"dark"} icon={"bicycle"} prefix={"fas"} />
+                            <Icon size={5} color={"dark"} icon={"bicycle"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"5em"} color={"primary"} icon={"brain"} prefix={"fas"} />
+                            <Icon size={5} color={"primary"} icon={"brain"} prefix={"fas"} />
                         </Column>
                     </Row>
 
                     <Row padding={1} text={"center"} alignVertical={"center"}>
                         <Column padding={1}>
-                            <Icon size={"1em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                            <Icon size={1} icon={"beer"} color={"action"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"2em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                            <Icon size={2} icon={"beer"} color={"action"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"3em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                            <Icon size={3} icon={"beer"} color={"action"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"4em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                            <Icon size={4} icon={"beer"} color={"action"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <Icon size={"5em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                            <Icon size={5} icon={"beer"} color={"action"} prefix={"fas"} />
                         </Column>
                     </Row>
 
@@ -122,37 +122,37 @@ class IconPage extends Component {
                         snippet={`
                         <Row padding={1} text={"center"}>
                             <Column padding={1}>
-                                <Icon size={"5em"} icon={"font-awesome-flag"} color={"secondary"} prefix={"fab"} />
+                                <Icon size={5} icon={"font-awesome-flag"} color={"secondary"} prefix={"fab"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"5em"} icon={"futbol"} color={"warning"} prefix={"fas"} />
+                                <Icon size={5} icon={"futbol"} color={"warning"} prefix={"fas"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"5em"} color={"decline"} icon={"apple-alt"} prefix={"fas"} />
+                                <Icon size={5} color={"decline"} icon={"apple-alt"} prefix={"fas"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"5em"} color={"dark"} icon={"bicycle"} prefix={"fas"} />
+                                <Icon size={5} color={"dark"} icon={"bicycle"} prefix={"fas"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"5em"} color={"primary"} icon={"brain"} prefix={"fas"} />
+                                <Icon size={5} color={"primary"} icon={"brain"} prefix={"fas"} />
                             </Column>
                         </Row>
 
                         <Row padding={1} text={"center"} alignVertical={"center"}>
                             <Column padding={1}>
-                                <Icon size={"1em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                                <Icon size={1} icon={"beer"} color={"action"} prefix={"fas"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"2em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                                <Icon size={2} icon={"beer"} color={"action"} prefix={"fas"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"3em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                                <Icon size={3} icon={"beer"} color={"action"} prefix={"fas"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"4em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                                <Icon size={4} icon={"beer"} color={"action"} prefix={"fas"} />
                             </Column>
                             <Column padding={1}>
-                                <Icon size={"5em"} icon={"beer"} color={"action"} prefix={"fas"} />
+                                <Icon size={5} icon={"beer"} color={"action"} prefix={"fas"} />
                             </Column>
                         </Row>
                     `}

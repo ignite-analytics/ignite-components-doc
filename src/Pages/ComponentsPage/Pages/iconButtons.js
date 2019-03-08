@@ -92,38 +92,38 @@ class IconButtonPage extends Component {
 
                     <Row padding={1} text={"center"}>
                         <Column padding={1}>
-                            <IconButton size={"2em"} icon={"plus"} color={"secondary"} />
+                            <IconButton size={2} icon={"plus"} color={"secondary"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} icon={"trash"} color={"decline"} prefix={"fas"} />
+                            <IconButton size={2} icon={"trash"} color={"decline"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} color={"primary"} icon={"info"} prefix={"fas"} />
+                            <IconButton size={2} color={"primary"} icon={"info"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} color={"dark"} icon={"question-circle"} prefix={"fas"} />
+                            <IconButton size={2} color={"dark"} icon={"question-circle"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} color={"stableDark"} icon={"align-center"} prefix={"fas"} />
+                            <IconButton size={2} color={"stableDark"} icon={"align-center"} prefix={"fas"} />
                         </Column>
                     </Row>
 
                     <CodeSnippet
                         snippet={`
                         <Column padding={1}>
-                            <IconButton size={"2em"} icon={"plus"} color={"secondary"} />
+                            <IconButton size={2} icon={"plus"} color={"secondary"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} icon={"trash"} color={"decline"} prefix={"fas"} />
+                            <IconButton size={2} icon={"trash"} color={"decline"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} color={"primary"} icon={"info"} prefix={"fas"} />
+                            <IconButton size={2} color={"primary"} icon={"info"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} color={"dark"} icon={"question-circle"} prefix={"fas"} />
+                            <IconButton size={2} color={"dark"} icon={"question-circle"} prefix={"fas"} />
                         </Column>
                         <Column padding={1}>
-                            <IconButton size={"2em"} color={"stableDark"} icon={"align-center"} prefix={"fas"} />
+                            <IconButton size={2} color={"stableDark"} icon={"align-center"} prefix={"fas"} />
                         </Column>
                     `}
                     />
