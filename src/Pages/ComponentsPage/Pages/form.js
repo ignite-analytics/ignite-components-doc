@@ -42,10 +42,10 @@ class FormPage extends Component {
 
     static defaultInputProps: Array<PropertyItem> = [
         {
-            name: "name",
+            name: "name?",
             type: "string",
             defaultValue: "",
-            description: "The name property that is also used as the key when used within a form",
+            description: "The name property that is also used as the key when used within a form. This prop can be omitted if you want the Form to ignore a field and exclude it from the onSubmit call.",
         },
         { name: "value?", type: "string | number | boolean", defaultValue: "text", description: "The input value" },
         {
@@ -65,12 +65,6 @@ class FormPage extends Component {
             type: "Function",
             defaultValue: "",
             description: "The callback for when the value in the input field changes",
-        },
-        {
-            name: "ignore?",
-            type: "boolean",
-            defaultValue: "false",
-            description: "The element will be excluded from the form's onSubmit call if this prop is true",
         },
     ];
 
