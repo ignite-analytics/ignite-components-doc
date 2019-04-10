@@ -60,12 +60,17 @@ class FormPage extends Component {
 
         { name: "style?", type: "Object", defaultValue: "1.5em", description: "The general style property" },
         { name: "className?", type: "string", defaultValue: "", description: "The general className property" },
-
         {
             name: "onChange?",
             type: "Function",
             defaultValue: "",
             description: "The callback for when the value in the input field changes",
+        },
+        {
+            name: "ignore?",
+            type: "boolean",
+            defaultValue: "false",
+            description: "The element will be excluded from the form's onSubmit call if this prop is true",
         },
     ];
 
@@ -210,23 +215,21 @@ class FormPage extends Component {
                                             onChange={(e, value) => {
                                                 console.log(value);
                                             }}
-                                            watch
                                             color={"primary"}
                                             label={"First name"}
                                             name={"firstname"}
                                         />
                                     </Column>
                                     <Column>
-                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
+                                        <Input label={"Last name"} name={"lastname"} value={"Rolfsen"} />
                                     </Column>
                                 </Row>
                                 <Row alignVertical={"center"} padding={[1, 0]}>
                                     <Column padding={[0, 1, 0, 0]}>
-                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
+                                        <Select multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
                                     </Column>
                                     <Column>
                                         <Input
-                                            watch
                                             color={"secondary"}
                                             type={"checkbox"}
                                             label={"Is active"}
@@ -237,7 +240,6 @@ class FormPage extends Component {
                                 <Row>
                                     <Column>
                                         <TextArea
-                                            watch
                                             height={10}
                                             value={"This is an initial text"}
                                             name={"description"}
@@ -272,19 +274,18 @@ class FormPage extends Component {
                             >
                                 <Row>
                                     <Column padding={[0, 1, 0, 0]}>
-                                        <Input watch color={"primary"} label={"First name"} name={"firstname"} />
+                                        <Input color={"primary"} label={"First name"} name={"firstname"} />
                                     </Column>
                                     <Column>
-                                        <Input watch label={"Last name"} name={"lastname"} value={"Rolfsen"} />
+                                        <Input label={"Last name"} name={"lastname"} value={"Rolfsen"} />
                                     </Column>
                                 </Row>
                                 <Row alignVertical={"center"} padding={[1, 0]}>
                                     <Column padding={[0, 1, 0, 0]}>
-                                        <Select watch multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
+                                        <Select multiSelect={true} name={"fruit"} items={FormPage.selectItems} />
                                     </Column>
                                     <Column>
                                         <Input
-                                            watch
                                             color={"secondary"}
                                             type={"checkbox"}
                                             label={"Is active"}
@@ -295,7 +296,6 @@ class FormPage extends Component {
                                 <Row>
                                     <Column>
                                         <TextArea
-                                            watch
                                             height={10}
                                             value={"This is an initial text"}
                                             name={"description"}
@@ -517,11 +517,10 @@ class FormPage extends Component {
 
                     <Row>
                         <Column padding={1}>
-                            <TextArea watch height={10} name={"description"} label={"Regular textarea"} />
+                            <TextArea height={10} name={"description"} label={"Regular textarea"} />
                         </Column>
                         <Column padding={1}>
                             <TextArea
-                                watch
                                 height={10}
                                 name={"description"}
                                 label={"With focus color"}
@@ -529,11 +528,10 @@ class FormPage extends Component {
                             />
                         </Column>
                         <Column padding={1}>
-                            <TextArea watch height={10} name={"description"} label={"Disabled textarea"} disabled />
+                            <TextArea height={10} name={"description"} label={"Disabled textarea"} disabled />
                         </Column>
                         <Column padding={1}>
                             <TextArea
-                                watch
                                 height={10}
                                 name={"description"}
                                 label={"Textarea with error"}
